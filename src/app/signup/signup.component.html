@@ -1,0 +1,104 @@
+<div class="container-fluid row" style="margin-top: 10px;">
+    <div class="col-md-6 m-auto">
+        <form class="form" style="padding:20px;" [formGroup]="signUpForm" (ngSubmit)="onInitSignUpForm()">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h1>Create Account</h1>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <label for="firstName">First name<span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" id="firstName" formControlName="firstName"
+                                placeholder="Enter first name">
+                        </div>
+                        <div class="col-md-6 col-sm-12 ">
+                            <label for="middleName"> Middle name:<span class="text-danger">*</span></label>
+                            <input type="text" id="middleName" formControlName="middleName" placeholder="Enter middle name"
+                                class=" form-control">
+                        </div>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-md-6 col-sm-12">
+                            <label for="secondName">Second Name<span class="text-danger">*</span></label>
+                            <input type="text" id="secondName" formControlName="secondName" placeholder="Enter second name"
+                                class="form-control">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <label for="gender">Gender:</label><span class="text-danger">*</span>
+                            <select id="gender" class="form-control" formControlName="gender">
+                                <option [disabled]="true" [selected]="true">Select Gender</option>
+                                <option value="Male" selected>Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row  pt-2">
+                        <div class="col-md-6 col-sm-12">
+                            <label for="dob">Date of Birth:</label><span class="text-danger">*</span>
+                            <input type="date" id="dob" formControlName="dob" class="form-control">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <label for="mobile">Mobile number:<span class="text-danger">*</span></label>
+                            <input type="text" id="mobile" formControlName="mobile" class="form-control"
+                                placeholder="Enter your mobile number">
+                        </div>
+                    </div>
+                    <div class="row  pt-2">
+                        <div class="col-md-6 col-sm-12">
+                            <label for="email">Email:<span class="text-danger">*</span>
+                            </label>
+                            <input type="email" id="email" formControlName="email" class="form-control"
+                                placeholder="Enter your email">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <label for="userName">Username:
+                                <span class="text-danger">*</span></label>
+                            <input type="text" id="userName" formControlName="userName" class="form-control"
+                                placeholder="Enter your username">
+                        </div>
+                    </div>
+                    <div class="row  pt-2">
+                        <div class="col-md-6 col-sm-12">
+                            <label for="password">Password:<span class="text-danger">*</span></label>
+                            <input type="password" id="password" formControlName="password" class="form-control"
+                                placeholder="Enter your password">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <label for="hobbies">Hobbies:<span class="text-danger">*</span></label>
+                            <input type="text" id="hobbies" formControlName="hobbies" class="form-control"
+                                placeholder="Enter your hobbies">
+                           
+                        </div>
+                    </div>
+                    <div class="row  pt-2">
+                        <div class="col-md col-sm-12">
+                            <label for="bio">Bio:<span class="text-danger">*</span></label>
+                            <textarea id="bio" formControlName="bio" class="form-control" placeholder="Enter your bio"
+                                rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md col-sm-12">
+                           
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md col-sm-12">
+                            <button type="submit" class="btn btn-primary"
+                                [disabled]="!(this.signUpForm.valid && this.signUpForm.value.termsAndConditions)">Signup</button>
+                            <button type="reset" class="btn btn-success ml-3">Reset</button>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md col-sm-12">
+                            <h6 style="font-size: 14px;">Already have an Account? <a [routerLink]="['/Login']">Signin</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

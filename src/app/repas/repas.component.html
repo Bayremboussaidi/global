@@ -1,0 +1,38 @@
+<div>
+    <button mat-raised-button color="primary" (click)="showAddForm = !showAddForm">Ajouter un repas</button>
+    <form *ngIf="showAddForm" [FormGroup | undefined]="repasForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Nom du repas</mat-label>
+        <input matInput formControlName="nom">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Disponible</mat-label>
+        <mat-select formControlName="disponible">
+          <mat-option value="oui">Oui</mat-option>
+          <mat-option value="non">Non</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Nom et prénom de la personne qui fait la commande</mat-label>
+        <input matInput formControlName="commandePar">
+      </mat-form-field>
+      <button mat-raised-button color="accent" type="submit">Submit</button>
+    </form>
+    <table mat-table [dataSource]="repasList" class="mat-elevation-z8">
+      <ng-container matColumnDef="nom">
+        <th mat-header-cell *matHeaderCellDef> Nom du repas </th>
+        <td mat-cell *matCellDef="let repas"> {{repas.nom}} </td>
+      </ng-container>
+      <ng-container matColumnDef="disponible">
+        <th mat-header-cell *matHeaderCellDef> Disponible </th>
+        <td mat-cell *matCellDef="let repas"> {{repas.disponible}} </td>
+      </ng-container>
+      <ng-container matColumnDef="commandePar">
+        <th mat-header-cell *matHeaderCellDef> Commandé par </th>
+        <td mat-cell *matCellDef="let repas"> {{repas.commandePar}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  

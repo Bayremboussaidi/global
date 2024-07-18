@@ -1,0 +1,39 @@
+<div class="container" style="width: 100%;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Second Name</th>
+                <th>Mobile</th>
+                <th>Gender</th>
+                <th>DOB</th>
+                <th style="min-width: 250px;">Email</th>
+                <th>Hobbies</th>
+                <th>Created At</th>
+                <th>Email Verified</th>
+                <th>Activated</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let element of usersData?.users" (click)="selectedRow(element)" [ngClass]="{'highlight': selectedRowIndex === element._id}">
+                <td>{{element.firstName}}</td>
+                <td>{{element.secondName}}</td>
+                <td>{{element.mobile}}</td>
+                <td>{{element.gender}}</td>
+                <td>{{element.dob}}</td>
+                <td style="min-width: 250px;">{{element.email}}</td>
+                <td>{{element.hobbies}}</td>
+                <td>{{element.createdAt | date:'short'}}</td>
+                <td>{{element.email_Verified ? 'Yes' : 'No'}}</td>
+                <td>{{element.activated ? 'Yes' : 'No'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paginator">
+    <button (click)="prevPage()" [disabled]="pageIndex === 0">Previous</button>
+    <span>Page {{pageIndex + 1}} of {{totalPages}}</span>
+    <button (click)="nextPage()" [disabled]="pageIndex >= totalPages - 1">Next</button>
+</div>
+

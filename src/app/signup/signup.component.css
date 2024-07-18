@@ -1,0 +1,16 @@
+label {
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #007bff !important;
+}
+
+.slider {
+  position: relative;
+  margin-top: 25px;
+  left: 166px;
+}

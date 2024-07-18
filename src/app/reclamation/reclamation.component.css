@@ -1,0 +1,44 @@
+/* Styles for Reclamation Component */
+
+/* Container styles */
+:host {
+    display: block;
+    padding: 20px;
+  }
+  
+  /* Button styles */
+  button {
+    margin-bottom: 10px;
+  }
+  
+  /* Form field styles */
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Table styles */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  /* Table header styles */
+  th {
+    background-color: #f0f0f0;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  /* Table cell styles */
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  /* Highlighted row styles */
+  .mat-row:hover {
+    background-color: #f0f0f0;
+  }
+  
