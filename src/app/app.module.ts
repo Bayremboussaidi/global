@@ -8,7 +8,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './auth/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './signup/signup.component';
 import { UsersComponent } from './users/users.component';
@@ -18,16 +17,26 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { TransportComponent } from './transport/transport.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HeaderComponent } from './header/header.component';
+import { ProfilComponent } from './profil/profil.component';
+import { SigninComponent } from './signin/signin.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
+    SigninComponent,
     SignupComponent,
     UsersComponent,
     RepasComponent,
     TransportComponent,
-    ReclamationComponent
+    ReclamationComponent,
+    DashboardComponent,
+    NavbarComponent,
+    HeaderComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,

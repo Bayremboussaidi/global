@@ -1,0 +1,40 @@
+<div>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="nom">Nom:</label>
+      <input id="nom" formControlName="nom" />
+    </div>
+    <div>
+      <label for="prenom">Prénom:</label>
+      <input id="prenom" formControlName="prenom" />
+    </div>
+    <div>
+      <label for="tel">Téléphone:</label>
+      <input id="tel" formControlName="tel" />
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" />
+    </div>
+    <div>
+      <label for="role">Rôle:</label>
+      <select id="role" formControlName="role">
+        <option value="admin">Admin</option>
+        <option value="ingenieur">Ingénieur</option>
+      </select>
+    </div>
+    <div>
+      <label for="password">Mot de passe:</label>
+      <input type="password" id="password" formControlName="password" />
+    </div>
+    <div>
+      <label for="profilePic">Photo de profil:</label>
+      <input type="file" id="profilePic" (change)="onFileChange($event)" />
+    </div>
+    <button type="submit">Enregistrer</button>
+  </form>
+  <div *ngIf="profilePicUrl">
+    <h3>Preview:</h3>
+    <img [src]="profilePicUrl" alt="Profile Picture" />
+  </div>
+</div>

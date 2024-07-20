@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { RepasComponent } from './repas/repas.component';
 import { TransportComponent } from './transport/transport.component';
 import { UsersComponent } from './users/users.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeaderComponent } from './header/header.component';
+import { ProfilComponent } from './profil/profil.component';
 
 const routes: Routes = [
   {
-    path: 'signin',
-    component: LoginComponent
+    path: '',
+    component: SignupComponent
   },
-  { path: '', redirectTo: '/auth/signin', pathMatch: 'full' } ,
+  //{ path: '', redirectTo: 'signin', pathMatch: 'full' } ,
   {
     path: 'signup', 
     component: SignupComponent
@@ -32,6 +34,17 @@ const routes: Routes = [
   {
     path: 'reclamation',
     component: ReclamationComponent
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
+  },
+  {
+    path: 'header',
+    component: HeaderComponent
+  },
+  {path: 'editp',
+  component: ProfilComponent
   }
 ];
 

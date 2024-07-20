@@ -31,9 +31,5 @@
     </table>
 </div>
 
-<div class="paginator">
-    <button (click)="prevPage()" [disabled]="pageIndex === 0">Previous</button>
-    <span>Page {{pageIndex + 1}} of {{totalPages}}</span>
-    <button (click)="nextPage()" [disabled]="pageIndex >= totalPages - 1">Next</button>
-</div>
+
 
