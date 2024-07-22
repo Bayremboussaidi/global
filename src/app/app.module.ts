@@ -22,7 +22,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
 import { ProfilComponent } from './profil/profil.component';
 import { SigninComponent } from './signin/signin.component';
-
+import { MatDialogModule } from '@angular/material/dialog'; // Import MatDialogModule
 
 @NgModule({
   declarations: [
@@ -51,7 +51,8 @@ import { SigninComponent } from './signin/signin.component';
     HttpClientModule,
     MatSelectModule,
     MatOptionModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule // Add MatDialogModule to imports
   ],
   providers: [],
   bootstrap: [AppComponent]
