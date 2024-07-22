@@ -8,11 +8,12 @@ import { ReclamationComponent } from './reclamation/reclamation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { ProfilComponent } from './profil/profil.component';
+import { SigninComponent } from './signin/signin.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: SignupComponent
+    path: 'signin',
+    component: SigninComponent
   },
   //{ path: '', redirectTo: 'signin', pathMatch: 'full' } ,
   {
