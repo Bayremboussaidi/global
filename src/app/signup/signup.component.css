@@ -5,6 +5,8 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: Arial, sans-serif;
+  background: #f0f2f5;
 }
 
 .wrap-signup {
@@ -13,20 +15,22 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .container {
   width: 100%;
-  max-width: 400px;
-  margin: 20px;
+  max-width: 500px;
 }
 
 .signup-box {
   width: 100%;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: white;
 }
 
 .signup-header {
@@ -34,9 +38,13 @@ body, html {
   margin-bottom: 20px;
 }
 
-.signup-image {
-  width: 100%;
-  height: auto;
+.signup-header h2 {
+  margin: 0;
+  font-size: 28px;
+  color: #3f51b5;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .signup-content .form-field {
@@ -46,12 +54,16 @@ body, html {
 .signup-content .form-field label {
   display: block;
   margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
 }
 
 .signup-content .form-field input,
 .signup-content .form-field select {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   box-sizing: border-box;
 }
 
@@ -67,11 +79,23 @@ body, html {
   color: white;
   cursor: pointer;
   border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.signup-actions button:hover {
+  background-color: #303f9f;
 }
 
 .signin-message {
-  margin-top: 16px;
+  margin-top: 20px;
   text-align: center;
+}
+
+.signin-message p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
 }
 
 .signin-message a {
@@ -79,7 +103,12 @@ body, html {
   color: #3f51b5;
 }
 
+.signin-message a:hover {
+  text-decoration: underline;
+}
+
 .error {
   color: red;
   font-size: 12px;
+  margin-top: 5px;
 }

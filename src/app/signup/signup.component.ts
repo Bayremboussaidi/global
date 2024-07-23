@@ -9,19 +9,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.signupForm = this.formBuilder.group({
+    this.signupForm = this.fb.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
-      adresse: ['', Validators.required],
-      tel: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
-      email: ['', [Validators.required, Validators.email]],
       sexe: ['', Validators.required],
-      poste: ['', Validators.required],
+      tel: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      poste: ['ingenieur', Validators.required],  // Default value set here
       password: ['', [Validators.required, Validators.minLength(6)]]
-    });
+    });;
   }
 
   onSubmit(): void {
