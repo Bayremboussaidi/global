@@ -1,114 +1,102 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, sans-serif;
-  background: #f0f2f5;
-}
+/* styles.css or signup.component.css */
 
+/* Center the wrap-signup container */
 .wrap-signup {
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  box-sizing: border-box;
+  height: 100vh; /* Full viewport height */
+  background-color: black; /* Background color of the page */
+  color: white; /* Default text color */
+  margin: 0;
 }
 
+/* Center the signup form within the container */
 .container {
   width: 100%;
-  max-width: 500px;
+  max-width: 500px; /* Set a max-width for the form container */
 }
 
+/* Style the signup box */
 .signup-box {
-  width: 100%;
-  padding: 30px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background: white;
+  background-color: #333; /* Dark grey background for the form */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.signup-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
+/* Style the form header */
 .signup-header h2 {
   margin: 0;
-  font-size: 28px;
-  color: #3f51b5;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  text-align: center;
+  color: white; /* Header text color */
 }
 
-.signup-content .form-field {
+/* Style form fields */
+.form-field {
   margin-bottom: 15px;
 }
 
-.signup-content .form-field label {
+.form-field label {
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
-  color: #333;
+  color: white; /* Label text color */
 }
 
-.signup-content .form-field input,
-.signup-content .form-field select {
+.form-field input,
+.form-field select {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 8px;
+  border: none;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
-.signup-actions {
-  text-align: center;
-  margin-top: 20px;
+.form-field input {
+  background-color: #444; /* Input background color */
+  color: white; /* Input text color */
 }
 
+.form-field select {
+  background-color: #444; /* Select background color */
+  color: white; /* Select text color */
+}
+
+/* Style error messages */
+.error {
+  color: red;
+  font-size: 0.9em;
+}
+
+/* Style the submit button */
 .signup-actions button {
-  padding: 10px 20px;
+  width: 100%;
+  padding: 10px;
   border: none;
-  background-color: #3f51b5;
-  color: white;
-  cursor: pointer;
   border-radius: 4px;
-  font-size: 16px;
-  transition: background-color 0.3s;
+  background-color: #555; /* Button background color */
+  color: white; /* Button text color */
+  cursor: pointer;
 }
 
 .signup-actions button:hover {
-  background-color: #303f9f;
+  background-color: #666; /* Button hover color */
 }
 
+/* Style the signin message */
 .signin-message {
-  margin-top: 20px;
   text-align: center;
+  margin-top: 15px;
 }
 
 .signin-message p {
   margin: 0;
-  font-size: 14px;
-  color: #333;
 }
 
 .signin-message a {
-  text-decoration: none;
-  color: #3f51b5;
+  color: #aaa; /* Link color */
 }
 
 .signin-message a:hover {
-  text-decoration: underline;
-}
-
-.error {
-  color: red;
-  font-size: 12px;
-  margin-top: 5px;
+  color: white; /* Link hover color */
 }

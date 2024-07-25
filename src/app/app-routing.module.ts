@@ -9,13 +9,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { ProfilComponent } from './profil/profil.component';
 import { SigninComponent } from './signin/signin.component';
+import { authGuard } from './auth.guard';
 
 const routes: Routes = [
   {
     path: 'signin',
     component: SigninComponent
   },
-  //{ path: '', redirectTo: 'signin', pathMatch: 'full' } ,
+  { path: '', redirectTo: 'signin', pathMatch: 'full' } ,
   {
     path: 'signup', 
     component: SignupComponent
@@ -30,7 +31,9 @@ const routes: Routes = [
   },
   {
     path: 'users',
-    component: UsersComponent
+    component: UsersComponent,
+    canActivate :[ authGuard ] ,
+    data : {'role': ['admin']}
   },
   {
     path: 'reclamation',

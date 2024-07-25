@@ -7,7 +7,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './signup/signup.component';
 import { UsersComponent } from './users/users.component';
@@ -23,6 +22,7 @@ import { HeaderComponent } from './header/header.component';
 import { ProfilComponent } from './profil/profil.component';
 import { SigninComponent } from './signin/signin.component';
 import { MatDialogModule } from '@angular/material/dialog'; // Import MatDialogModule
+import { HttpClientModule } from '@angular/common/http'; 
 
 @NgModule({
   declarations: [
@@ -52,8 +52,7 @@ import { MatDialogModule } from '@angular/material/dialog'; // Import MatDialogM
     MatSelectModule,
     MatOptionModule,
     MatTableModule,
-    MatDialogModule // Add MatDialogModule to imports
-  ],
+    MatDialogModule  ],
   providers: [],
   bootstrap: [AppComponent]
 })
