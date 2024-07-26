@@ -22,7 +22,10 @@ import { HeaderComponent } from './header/header.component';
 import { ProfilComponent } from './profil/profil.component';
 import { SigninComponent } from './signin/signin.component';
 import { MatDialogModule } from '@angular/material/dialog'; // Import MatDialogModule
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
+import { ShowRepComponent } from './ADMIN/show-rep/show-rep.component';
+import { ShowTransComponent } from './ADMIN/show-trans/show-trans.component';
+import { DashboardAComponent } from './ADMIN/dashboard-a/dashboard-a.component'; 
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { HttpClientModule } from '@angular/common/http';
     DashboardComponent,
     NavbarComponent,
     HeaderComponent,
-    ProfilComponent
+    ProfilComponent,
+    ShowRepComponent,
+    ShowTransComponent,
+    DashboardAComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +58,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     MatOptionModule,
     MatTableModule,
-    MatDialogModule  ],
+    MatDialogModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

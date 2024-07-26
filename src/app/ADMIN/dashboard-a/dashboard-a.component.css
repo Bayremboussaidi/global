@@ -1,4 +1,3 @@
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -69,12 +68,12 @@
     .table-header {
       display: none;
     }
-    
+  
     .table-row {
       display: block;
       margin-bottom: 10px;
     }
-    
+  
     .table-row .col {
       display: block;
       text-align: right;
@@ -82,7 +81,7 @@
       padding-left: 50%;
       margin-bottom: 10px;
     }
-    
+  
     .table-row .col::before {
       content: attr(data-label);
       position: absolute;
@@ -93,14 +92,11 @@
       text-align: left;
       font-weight: bold;
     }
-    
+  
     .table-row .col div {
       width: calc(100% - 10px);
       margin-left: 5px;
       margin-right: 5px;
     }
   }
-  
-
-
   

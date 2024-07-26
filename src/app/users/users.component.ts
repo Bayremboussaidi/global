@@ -7,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ["./users.component.css"],
 })
 export class UsersComponent implements OnInit {
+ngOnInit(): void {
+  throw new Error('Method not implemented.');
+}
 selectedRow(_t18: any) {
 throw new Error('Method not implemented.');
 }
-user: any;
+
+tableData = [
+  { jobId: 42235, customerName: 'John Doe', amount: 350, paymentStatus: 'Pending' },
+  { jobId: 42442, customerName: 'Jennifer Smith', amount: 220, paymentStatus: 'Pending' },
+  { jobId: 42257, customerName: 'John Smith', amount: 341, paymentStatus: 'Pending' },
+  { jobId: 42311, customerName: 'John Carpenter', amount: 115, paymentStatus: 'Pending' },
+];
+}
+/*user: any;
 closeSidenav() {
 throw new Error('Method not implemented.');
 }
@@ -69,7 +80,7 @@ totalPages: any;
     /*this.user=row.user;
     this.sideNavOpen = true;
     this.selectedRowIndex = row._id;
-  }}*/
+  }}
   
 
 function closeSidenav() {
@@ -78,5 +89,7 @@ function closeSidenav() {
 
 function selectedRow(row: any) {
   throw new Error('Function not implemented.');
-}
+} */
+
+
 

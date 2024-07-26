@@ -1,35 +1,26 @@
-<div class="container" style="width: 100%;">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Second Name</th>
-                <th>Mobile</th>
-                <th>Gender</th>
-                <th>DOB</th>
-                <th style="min-width: 250px;">Email</th>
-                <th>Hobbies</th>
-                <th>Created At</th>
-                <th>Email Verified</th>
-                <th>Activated</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let element of usersData?.users" (click)="selectedRow(element)" [ngClass]="{'highlight': selectedRowIndex === element._id}">
-                <td>{{element.firstName}}</td>
-                <td>{{element.secondName}}</td>
-                <td>{{element.mobile}}</td>
-                <td>{{element.gender}}</td>
-                <td>{{element.dob}}</td>
-                <td style="min-width: 250px;">{{element.email}}</td>
-                <td>{{element.hobbies}}</td>
-                <td>{{element.createdAt | date:'short'}}</td>
-                <td>{{element.email_Verified ? 'Yes' : 'No'}}</td>
-                <td>{{element.activated ? 'Yes' : 'No'}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-
-
+<div class="container">
+    <h2>Responsive Tables Using LI <small>Triggers on 767px</small></h2>
+    <ul class="responsive-table">
+      <li class="table-header">
+        <div class="col col-1">Job Id</div>
+        <div class="col col-2">Customer Name</div>
+        <div class="col col-3">Amount Due</div>
+        <div class="col col-4">Payment Status</div>
+      </li>
+      <li class="table-row" *ngFor="let row of tableData">
+        <div class="col col-1" data-label="Job Id">
+          <div [routerLink]="['/job', row.jobId]">{{ row.jobId }}</div>
+        </div>
+        <div class="col col-2" data-label="Customer Name">
+          <div [routerLink]="['/customer', row.customerName]">{{ row.customerName }}</div>
+        </div>
+        <div class="col col-3" data-label="Amount">
+          <div [routerLink]="['/amount', row.amount]">{{ row.amount | currency }}</div>
+        </div>
+        <div class="col col-4" data-label="Payment Status">
+          <div [routerLink]="['/status', row.paymentStatus]">{{ row.paymentStatus }}</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
