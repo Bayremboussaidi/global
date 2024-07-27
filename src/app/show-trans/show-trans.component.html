@@ -1,0 +1,29 @@
+<div class="container">
+    <h2>Table des Transports</h2>
+    <form (ngSubmit)="onSubmit()">
+      <table class="table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" (change)="selectAll($event)" /></th>
+            <th>Id</th>
+            <th>Chemin</th>
+            <th>Departure</th>
+            <th>Arrivée</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items">
+            <td><input type="checkbox" [(ngModel)]="item.selected" name="item{{item.id}}" /></td>
+            <td>{{ item.id }}</td>
+            <td>{{ item.chemin }}</td>
+            <td>{{ item.departure }}</td>
+            <td>{{ item.Arrivee }}</td>
+
+          </tr>
+        </tbody>
+      </table>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  

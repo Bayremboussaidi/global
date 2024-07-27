@@ -9,23 +9,24 @@ import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './signup/signup.component';
-import { UsersComponent } from './users/users.component';
-import { RepasComponent } from './repas/repas.component';
+import { UsersComponent } from './ADMIN/users/users.component';
+import { RepasComponent } from './ADMIN/repas/repas.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
-import { TransportComponent } from './transport/transport.component';
+import { TransportComponent } from './ADMIN/transport/transport.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
-import { ProfilComponent } from './profil/profil.component';
+import { ProfileComponent } from './profil/profile.component';
 import { SigninComponent } from './signin/signin.component';
 import { MatDialogModule } from '@angular/material/dialog'; // Import MatDialogModule
 import { HttpClientModule } from '@angular/common/http';
-import { ShowRepComponent } from './ADMIN/show-rep/show-rep.component';
-import { ShowTransComponent } from './ADMIN/show-trans/show-trans.component';
+import { ShowRepComponent } from './show-rep/show-rep.component';
+import { ShowTransComponent } from './show-trans/show-trans.component';
 import { DashboardAComponent } from './ADMIN/dashboard-a/dashboard-a.component'; 
+
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { DashboardAComponent } from './ADMIN/dashboard-a/dashboard-a.component';
     DashboardComponent,
     NavbarComponent,
     HeaderComponent,
-    ProfilComponent,
+    ProfileComponent,
     ShowRepComponent,
     ShowTransComponent,
     DashboardAComponent

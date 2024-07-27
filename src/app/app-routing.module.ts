@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
-import { RepasComponent } from './repas/repas.component';
-import { TransportComponent } from './transport/transport.component';
-import { UsersComponent } from './users/users.component';
+import { RepasComponent } from './ADMIN/repas/repas.component';
+import { TransportComponent } from './ADMIN/transport/transport.component';
+import { UsersComponent } from './ADMIN/users/users.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
-import { ProfilComponent } from './profil/profil.component';
+import { ProfileComponent } from './profil/profile.component';
 import { SigninComponent } from './signin/signin.component';
 import { authGuard } from './auth.guard';
 import { DashboardAComponent } from './ADMIN/dashboard-a/dashboard-a.component';
-import { ShowRepComponent } from './ADMIN/show-rep/show-rep.component';
-import { ShowTransComponent } from './ADMIN/show-trans/show-trans.component';
+import { ShowRepComponent } from './show-rep/show-rep.component';
+import { ShowTransComponent } from './show-trans/show-trans.component';
 
 const routes: Routes = [
   {
@@ -25,17 +25,17 @@ const routes: Routes = [
     component: SignupComponent
   },
   {
-    path: 'repas',
-    component: RepasComponent
+    path: 'repas-a',
+    component: RepasComponent , canActivate :[ authGuard ] 
   },
   {
-    path: 'transport',
-    component: TransportComponent
+    path: 'transport-a',
+    component: TransportComponent, canActivate :[ authGuard ] 
   },
   {
-    path: 'users',
+    path: 'users-a',
     component: UsersComponent,
-    //canActivate :[ authGuard ] ,
+    canActivate :[ authGuard ] 
    // data : {'role': ['admin']}
   },
   {
@@ -51,16 +51,16 @@ const routes: Routes = [
     component: HeaderComponent
   },
   {path: 'editp',
-  component: ProfilComponent
+  component: ProfileComponent
   },
   {path: 'dash-admin',
-    component: DashboardAComponent
+    component: DashboardAComponent , //canActivate :[ authGuard ] 
   },  
-  {path: 'repas-admin',
-    component: ShowRepComponent
+  {path: 'repas',
+    component: ShowRepComponent 
   },
-  {path: 'trans-admin',
-    component: ShowTransComponent
+  {path: 'trans',
+    component: ShowTransComponent 
   }
 ];
 

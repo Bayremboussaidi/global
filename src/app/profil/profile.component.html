@@ -1,0 +1,53 @@
+<div class="wrap-profile">
+  <div class="container">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <div class="profile-box">
+        <div class="profile-header">
+          <h2>Update Profile</h2>
+        </div>
+        <div class="profile-content">
+          <div class="form-field">
+            <label for="profilePic">Profile Picture</label>
+            <input type="file" id="profilePic" (change)="onFileChange($event)" />
+            <div *ngIf="profilePicUrl">
+              <img [src]="profilePicUrl" alt="Profile Picture" class="profile-pic-preview" />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" placeholder="Enter your last name" formControlName="nom">
+          </div>
+
+          <div class="form-field">
+            <label for="prenom">Prenom</label>
+            <input type="text" id="prenom" placeholder="Enter your first name" formControlName="prenom">
+          </div>
+
+          <div class="form-field">
+            <label for="sexe">Sexe</label>
+            <select id="sexe" formControlName="sexe">
+              <option value="" disabled>Select your gender</option>
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="tel">Tel</label>
+            <input type="tel" id="tel" placeholder="Enter your phone number" formControlName="tel">
+          </div>
+
+          <div class="form-field">
+            <label for="poste">Poste</label>
+            <input type="text" id="poste" placeholder="Donner ton poste du travail" formControlName="poste">
+          </div>
+
+        </div>
+        <div class="profile-actions">
+          <button type="submit">Update Profile</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

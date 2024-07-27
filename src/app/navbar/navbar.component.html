@@ -1,20 +1,11 @@
 <div class="sidebar">
-    <div class="sidebar-content">
-      <a routerLink="/repas" class="nav-link">Commander repas</a>
-
-      <a routerLink="/transport" class="nav-link">Reserver Transport</a>
-
-      <a routerLink="/users" class="nav-link">Les Utilisateurs</a>
-
-      <a routerLink="/reclamation" class="nav-link">Reclamation</a>
-
-      <a routerLink="/editp" class="nav-link">Mon Profil</a>
-
-
-
-      <a routerLink="/par" class="nav-link">Mon Profil</a>
-
-
+  <div class="sidebar-content">
+    <div class="profile-pic-container" *ngIf="profilePicUrl">
+      <img [src]="profilePicUrl" alt="Profile Picture" class="profile-pic-sidebar" />
     </div>
- </div>
-  
+    <a routerLink="/repas" class="nav-link">Commander repas</a>
+    <a routerLink="/trans" class="nav-link">Reserver Transport</a>
+    <a routerLink="/reclamation" class="nav-link">Reclamation</a>
+    <a routerLink="/editp" class="nav-link">Mon Profil</a>
+  </div>
+</div>
