@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.profileService.profilePic$.subscribe(url => {
-      this.profilePicUrl = url || null; // Ensure it's never undefined
+      this.profilePicUrl = url || null;
     });
   }
 }

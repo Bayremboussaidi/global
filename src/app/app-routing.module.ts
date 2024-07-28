@@ -13,6 +13,7 @@ import { authGuard } from './auth.guard';
 import { DashboardAComponent } from './ADMIN/dashboard-a/dashboard-a.component';
 import { ShowRepComponent } from './show-rep/show-rep.component';
 import { ShowTransComponent } from './show-trans/show-trans.component';
+import { HeadComponent } from './head/head.component';
 
 const routes: Routes = [
   {
@@ -61,6 +62,9 @@ const routes: Routes = [
   },
   {path: 'trans',
     component: ShowTransComponent 
+  },
+  {path: 'head',
+    component: HeadComponent 
   }
 ];
 

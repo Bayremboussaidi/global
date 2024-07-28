@@ -25,7 +25,8 @@ import { MatDialogModule } from '@angular/material/dialog'; // Import MatDialogM
 import { HttpClientModule } from '@angular/common/http';
 import { ShowRepComponent } from './show-rep/show-rep.component';
 import { ShowTransComponent } from './show-trans/show-trans.component';
-import { DashboardAComponent } from './ADMIN/dashboard-a/dashboard-a.component'; 
+import { DashboardAComponent } from './ADMIN/dashboard-a/dashboard-a.component';
+import { HeadComponent } from './head/head.component'; 
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { DashboardAComponent } from './ADMIN/dashboard-a/dashboard-a.component';
     ProfileComponent,
     ShowRepComponent,
     ShowTransComponent,
-    DashboardAComponent
+    DashboardAComponent,
+    HeadComponent
   ],
   imports: [
     BrowserModule,
