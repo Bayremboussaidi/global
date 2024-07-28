@@ -4,7 +4,43 @@ body, html {
   padding: 0;
   height: 100%;
 }
+.contact p {
+  color: #555;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.contact h1 {
+  color: #333;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.contact {
+  padding: 20px;
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: #f4f4f463;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.contact-info p {
+  font-size: 18px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
 
+.contact-info i {
+  margin-right: 10px;
+  color: #333;
+}
+.contact {
+  padding: 20px;
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 .sidebar {
   position: fixed;
   top: 0;
@@ -42,7 +78,71 @@ body, html {
   color: gray;
 } 
 
+.black{
+  color: #0b0101;
+}
+
+.container {
+  text-align: center;
+}
 
 
+.map-link {
+  text-decoration: none;
+  color: #006;
+  background-color: rgb(255, 255, 255);
+  padding: 4px 8px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.linkedin-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #0077b5; /* LinkedIn blue */
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.linkedin-button:hover {
+  background-color: #005582;
+  transform: translateY(-2px);
+}
 
 
+.facebook {
+  display: flex;
+  align-items: center;
+}
+
+.facebook .map-button {
+  width: 24px;  /* Adjust the width as needed */
+  height: auto;
+  margin-right: 0;  /* Remove margin if not needed */
+}
+
+
+.social-media {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+}
+
+.social-icon img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s;
+}
+
+.social-icon img:hover {
+  transform: scale(1.1);
+}

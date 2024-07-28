@@ -27,16 +27,16 @@ const routes: Routes = [
   },
   {
     path: 'repas-a',
-    component: RepasComponent , canActivate :[ authGuard ] 
+    component: RepasComponent , //canActivate :[ authGuard ] 
   },
   {
     path: 'transport-a',
-    component: TransportComponent, canActivate :[ authGuard ] 
+    component: TransportComponent, //canActivate :[ authGuard ] 
   },
   {
     path: 'users-a',
-    component: UsersComponent,
-    canActivate :[ authGuard ] 
+    component: UsersComponent, canActivate :[ authGuard ] 
+   
    // data : {'role': ['admin']}
   },
   {
