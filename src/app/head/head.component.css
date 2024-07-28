@@ -9,7 +9,7 @@ body, html {
   
   /* Navbar styles */
   .navbar {
-    background-color: #ccc; /* Gray background */
+    background-color: #9cec33d1; /* Gray background */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   }
   
@@ -34,7 +34,7 @@ body, html {
   }
   
   .navbar .navbar-nav .nav-item .nav-link {
-    color: #000; /* Black color for links */
+    color: #6218f7df; /* Black color for links */
     font-size: 18px;
     padding: 15px;
     text-decoration: none;
