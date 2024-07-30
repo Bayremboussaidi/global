@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const apiRoutes = require('./routes/api');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 
@@ -17,7 +18,7 @@ app.listen(PORT, () => {
 });
 
 
-----
+
 /*
 const express = require("express");
 var cors = require("cors");
