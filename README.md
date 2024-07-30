@@ -1,4 +1,4 @@
-# Global Enr
+
 
 ## Licenses
 This project uses the following licenses for the programming languages used:
