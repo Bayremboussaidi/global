@@ -86,51 +86,36 @@ router.post('/signin', async (req, res) => {
     });
   });
 
-
-
-
-
-  /*transport*/
-
-  router.post('/transport', async (req, res) => {
+  router.post('/transport', (req, res) => {
     const { adresseDest, dateDepart, heureDepart } = req.body;
+    const query = 'INSERT INTO transport (adresseDest, dateDepart, heureDepart) VALUES (?, ?, ?)';
+    db.query(query, [adresseDest, dateDepart, heureDepart], (err, result) => {
+      if (err) {
+        console.error('Error inserting transport:', err);
+        res.status(500).send('Error inserting transport');
+      } else {
+        res.status(200).send('Transport added successfully');
+      }
+    });
+  });
 
-    // Validate the inputs
-    if (!adresseDest || !dateDepart || !heureDepart) {
-        return res.status(400).json({ message: 'All fields are required' });
-    }
+  router.get('/transport', (req, res) => {
+    const query = 'SELECT * FROM transport';
+    db.query(query, (err, results) => {
+      if (err) {
+        console.error('Error fetching transport list:', err);
+        res.status(500).send('Error fetching transport list');
+      } else {
+        res.status(200).json(results);
+      }
+    });
+  });
 
-    try {
-        const connection = await mysql.createConnection(db);
-        // Insert record into the transport table
-        const [result] = await connection.execute(
-            'INSERT INTO transport (adresseDest, dateDepart, heureDepart) VALUES (?, ?, ?)',
-            [adresseDest, dateDepart, heureDepart]
-        );
 
-        //  fetch the newly created transport for the response
-        const [newTransport] = await connection.execute('SELECT * FROM transport WHERE id = ?', [result.insertId]);
 
-        res.status(201).json(newTransport[0]);
-        await connection.end();
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Internal server error' });
-    }
-});
 
-// GET /api/transport - Get all transports
-router.get('/transport', async (req, res) => {
-    try {
-        const connection = await mysql.createConnection(dbConfig);
-        const [transports] = await connection.execute('SELECT * FROM transport');
 
-        res.json(transports);
-        await connection.end();
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Internal server error' });
-    }
-});
+  
+
 
 module.exports = router;
