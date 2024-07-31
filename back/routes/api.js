@@ -30,8 +30,9 @@ router.post('/signup', async (req, res) => {
 });
 
 
-////signin
-/*
+
+/*signin*/
+
 router.post('/signin', async (req, res) => {
     const { email, password } = req.body;
   
@@ -58,10 +59,14 @@ router.post('/signin', async (req, res) => {
       // Compare the password with the hashed password stored in the database
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) {
-        return res.status(401).send('Invalid credentials'); // Password does not match
+        return res.status(401).send('Invalid credentials');
+      }
+      if (isMatch) {
+       return res.status(200).send('correct') ;
       }
 
 
+      require('dotenv').config();
       const JWT_SECRET = process.env.JWT_SECRET
   
       // Generate a JWT token
@@ -80,6 +85,52 @@ router.post('/signin', async (req, res) => {
       });
     });
   });
-  
 
-module.exports = router;*/
+
+
+
+
+  /*transport*/
+
+  router.post('/transport', async (req, res) => {
+    const { adresseDest, dateDepart, heureDepart } = req.body;
+
+    // Validate the inputs
+    if (!adresseDest || !dateDepart || !heureDepart) {
+        return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    try {
+        const connection = await mysql.createConnection(db);
+        // Insert record into the transport table
+        const [result] = await connection.execute(
+            'INSERT INTO transport (adresseDest, dateDepart, heureDepart) VALUES (?, ?, ?)',
+            [adresseDest, dateDepart, heureDepart]
+        );
+
+        //  fetch the newly created transport for the response
+        const [newTransport] = await connection.execute('SELECT * FROM transport WHERE id = ?', [result.insertId]);
+
+        res.status(201).json(newTransport[0]);
+        await connection.end();
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+// GET /api/transport - Get all transports
+router.get('/transport', async (req, res) => {
+    try {
+        const connection = await mysql.createConnection(dbConfig);
+        const [transports] = await connection.execute('SELECT * FROM transport');
+
+        res.json(transports);
+        await connection.end();
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+module.exports = router;
