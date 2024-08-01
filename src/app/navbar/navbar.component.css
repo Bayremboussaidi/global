@@ -129,7 +129,8 @@ body, html {
 .social-media {
   display: flex;
   justify-content: space-around;
-  margin-top: 20px;
+  margin-top: 30px;
+  padding-top: 40px;
 }
 
 .social-icon {
@@ -146,3 +147,4 @@ body, html {
 .social-icon img:hover {
   transform: scale(1.1);
 }
+

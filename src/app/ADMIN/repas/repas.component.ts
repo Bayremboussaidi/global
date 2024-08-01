@@ -10,13 +10,13 @@ export class RepasComponent implements OnInit {
   showAddForm: boolean = false;
   repasForm: FormGroup;
   repasList: any[] = [];
-  displayedColumns: string[] = ['nom', 'disponible', 'commandePar'];
+  displayedColumns: string[] = ['Nom du repas', 'Prix'];
 
   constructor(private formBuilder: FormBuilder) {
     this.repasForm = this.formBuilder.group({
       nom: ['', Validators.required],
-      disponible: ['', Validators.required],
-      commandePar: ['', Validators.required]
+      prix: ['', Validators.required]
+      
     });
   }
 

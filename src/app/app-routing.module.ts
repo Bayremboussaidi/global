@@ -35,7 +35,7 @@ const routes: Routes = [
   },
   {
     path: 'users-a',
-    component: UsersComponent, canActivate :[ authGuard ] 
+    component: UsersComponent, //canActivate :[ authGuard ] 
    
    // data : {'role': ['admin']}
   },

@@ -6,6 +6,12 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+collapse() {
+throw new Error('Method not implemented.');
+}
+expand() {
+throw new Error('Method not implemented.');
+}
   isExpanded = false;
 
   ngOnInit(): void {
@@ -21,3 +27,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 }
+
+
+
+
