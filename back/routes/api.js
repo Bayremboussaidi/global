@@ -1,9 +1,16 @@
-// routes/api.js
+
+
+
+
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const db = require('../config/db');
 
 const router = express.Router();
+
+
+/*signup*/
+
 
 router.post('/signup', async (req, res) => {
   const { nom, prenom, sexe, tel, email, poste, password } = req.body;
@@ -111,8 +118,87 @@ router.post('/signin', async (req, res) => {
     });
   });
 
+  
+/*repas*/
+
+router.post('/repas', (req, res) => {
+  const { nom, prix } = req.body;
+  const query = 'INSERT INTO repas (nom, prix) VALUES (?, ?)';
+  db.query(query, [nom, prix], (err, result) => {
+    if (err) {
+      console.error('Error inserting repas:', err);
+      res.status(500).send('Error inserting repas');
+    } else {
+      res.status(200).send('Repas added successfully');
+    }
+  });
+});
 
 
+router.get('/repas', (req, res) => {
+  const query = 'SELECT * FROM repas';
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching repas:', err);
+      res.status(500).send('Error fetching repas');
+    } else {
+      res.status(200).json(results);
+    }
+  });
+});
+
+
+
+
+
+
+/*profile update*/
+
+const User = require('./User');
+
+router.put('/profile', async (req, res) => {
+  const { email, password, nom, prenom, sexe, tel, poste } = req.body;
+
+  try {
+      // Find user by email
+      const user = await User.findOne({ email });
+      if (!user) {
+          return res.status(404).json({ message: 'User not found.' });
+      }
+
+      // Validate password
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+          return res.status(401).json({ message: 'Invalid credentials.' });
+      }
+
+      
+      if (nom !== undefined) user.nom = nom; 
+      if (prenom !== undefined) user.prenom = prenom; 
+      if (sexe !== undefined) user.sexe = sexe; 
+      if (tel !== undefined) user.tel = tel; 
+      if (poste !== undefined) user.poste = poste; 
+
+      
+      await user.save();
+
+      
+      res.status(200).json({
+          message: 'Profile updated successfully!',
+          user: {
+              nom: user.nom,
+              prenom: user.prenom,
+              email: user.email,
+              sexe: user.sexe,
+              tel: user.tel,
+              poste: user.poste,
+          },
+      });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server error.' });
+  }
+});
 
 
   
