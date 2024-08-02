@@ -93,6 +93,24 @@ router.post('/signin', async (req, res) => {
     });
   });
 
+
+  /*fetch all users*/
+  router.get('/users', (req, res) => {
+    db.query('SELECT * FROM users', (err, results) => {
+        if (err) {
+            console.error('Error fetching users from database:', err);
+            return res.status(500).json({ error: 'Database error.' });
+        }
+        res.json(results); // Send the results as a JSON response
+    });
+});
+
+
+
+
+
+//transport
+
   router.post('/transport', (req, res) => {
     const { adresseDest, dateDepart, heureDepart } = req.body;
     const query = 'INSERT INTO transport (adresseDest, dateDepart, heureDepart) VALUES (?, ?, ?)';
@@ -162,19 +180,19 @@ router.put('/profile', async (req, res) => {
   const User = require('./User');
 
   try {
-      // Find user by email
+      
       const user = await User.findUserByEmail(email);
       if (!user) {
           return res.status(404).json({ message: 'User not found.' });
       }
 
-      // Validate password
+      
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) {
           return res.status(401).json({ message: 'Invalid credentials.' });
       }
 
-      // Update user fields only if they are provided
+     
       const updates = {};
       if (nom !== undefined) updates.nom = nom; 
       if (prenom !== undefined) updates.prenom = prenom; 
@@ -185,7 +203,7 @@ router.put('/profile', async (req, res) => {
       // Update the user profile in the database
       await User.updateUserProfile(user.email, updates);
 
-      // Optional: Retrieve the updated user, if you want to confirm the changes
+     
       const updatedUser = await User.findUserByEmail(user.email);
 
       res.status(200).json({
@@ -203,6 +221,43 @@ router.put('/profile', async (req, res) => {
       console.error('Update profile error:', error);
       res.status(500).json({ message: 'Server error.' });
   }
+});
+
+/*reclamation*/
+
+
+router.post('/reclamation', (req, res) => {
+  const { email, reclam } = req.body;
+
+  // Basic validation
+  if (!email || !reclam) {
+      return res.status(400).json({ error: 'Email and reclamation text are required.' });
+  }
+
+  // Insert reclamation into the database
+  db.query(
+      'INSERT INTO reclamation (email, reclam) VALUES (?, ?)',
+      [email, reclam],
+      (err, result) => {
+          if (err) {
+              console.error('Error inserting data into database:', err);
+              return res.status(500).json({ error: 'Database error.' });
+          }
+          res.status(201).json({ id: result.insertId, message: 'Reclamation added successfully.' });
+      }
+  );
+});
+
+//GET all reclamations 
+
+router.get('/reclamation', (req, res) => {
+  db.query('SELECT * FROM reclamation', (err, results) => {
+      if (err) {
+          console.error('Error fetching reclamations from database:', err);
+          return res.status(500).json({ error: 'Database error.' });
+      }
+      res.json(results); // Send the results as a JSON response
+  });
 });
 
 
