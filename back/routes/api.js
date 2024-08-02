@@ -154,14 +154,16 @@ router.get('/repas', (req, res) => {
 
 /*profile update*/
 
-const User = require('./User');
+
 
 router.put('/profile', async (req, res) => {
   const { email, password, nom, prenom, sexe, tel, poste } = req.body;
 
+  const User = require('./User');
+
   try {
       // Find user by email
-      const user = await User.findOne({ email });
+      const user = await User.findUserByEmail(email);
       if (!user) {
           return res.status(404).json({ message: 'User not found.' });
       }
@@ -172,36 +174,36 @@ router.put('/profile', async (req, res) => {
           return res.status(401).json({ message: 'Invalid credentials.' });
       }
 
-      
-      if (nom !== undefined) user.nom = nom; 
-      if (prenom !== undefined) user.prenom = prenom; 
-      if (sexe !== undefined) user.sexe = sexe; 
-      if (tel !== undefined) user.tel = tel; 
-      if (poste !== undefined) user.poste = poste; 
+      // Update user fields only if they are provided
+      const updates = {};
+      if (nom !== undefined) updates.nom = nom; 
+      if (prenom !== undefined) updates.prenom = prenom; 
+      if (sexe !== undefined) updates.sexe = sexe; 
+      if (tel !== undefined) updates.tel = tel; 
+      if (poste !== undefined) updates.poste = poste;
 
-      
-      await user.save();
+      // Update the user profile in the database
+      await User.updateUserProfile(user.email, updates);
 
-      
+      // Optional: Retrieve the updated user, if you want to confirm the changes
+      const updatedUser = await User.findUserByEmail(user.email);
+
       res.status(200).json({
           message: 'Profile updated successfully!',
           user: {
-              nom: user.nom,
-              prenom: user.prenom,
-              email: user.email,
-              sexe: user.sexe,
-              tel: user.tel,
-              poste: user.poste,
+              nom: updatedUser.nom,
+              prenom: updatedUser.prenom,
+              email: updatedUser.email,
+              sexe: updatedUser.sexe,
+              tel: updatedUser.tel,
+              poste: updatedUser.poste,
           },
       });
   } catch (error) {
-      console.error(error);
+      console.error('Update profile error:', error);
       res.status(500).json({ message: 'Server error.' });
   }
 });
-
-
-  
 
 
 module.exports = router;

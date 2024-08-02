@@ -5,12 +5,13 @@ const User = {
     
     findUserByEmail: (email) => {
         return new Promise((resolve, reject) => {
-            const query = 'SELECT * FROM users WHERE email = ?';
+            // Corrected SQL query
+            const query = 'SELECT * FROM `users` WHERE `email` = ?';
             db.query(query, [email], (err, results) => {
                 if (err) {
                     return reject(err);
                 }
-                resolve(results[0]);
+                resolve(results[0]); // Returns the first matching result
             });
         });
     },
