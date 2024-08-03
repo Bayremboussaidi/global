@@ -8,27 +8,35 @@ import { ReclamationService } from '../services/reclamation.service';
   styleUrls: ['./reclamation.component.css']
 })
 export class ReclamationComponent implements OnInit {
-  reclamationForm!: FormGroup; // Ensure that reclamationForm is initialized
-
-  reclamationList: any[] = []; // Replace with your data model
-  displayedColumns: string[] = ['emailEnvoi', 'texte']; // Replace with your column names
+  reclamationForm!: FormGroup;
+  reclamationList: any[] = [];
+  displayedColumns: string[] = ['emailEnvoi', 'texte'];
   showAddForm: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private reclamationService: ReclamationService) { }
 
   ngOnInit(): void {
     this.initializeForm();
-    
+    this.loadReclamations();
   }
 
   initializeForm() {
     this.reclamationForm = this.formBuilder.group({
-      emailEnvoi: ['bayremboussaidi187@gmail.com', [Validators.required, Validators.email]],
+      emailEnvoi: ['', [Validators.required, Validators.email]],
       texte: ['', Validators.required]
     });
   }
 
-
+  loadReclamations() {
+    this.reclamationService.getAllReclamations().subscribe(
+      (data: any[]) => {
+        this.reclamationList = data;
+      },
+      (error) => {
+        console.error('Error fetching reclamations', error);
+      }
+    );
+  }
 
   onSubmit() {
     if (this.reclamationForm.valid) {
@@ -44,4 +52,5 @@ export class ReclamationComponent implements OnInit {
         }
       );
     }
-} }
+  }
+}

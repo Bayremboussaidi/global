@@ -27,7 +27,7 @@ import { ShowRepComponent } from './show-rep/show-rep.component';
 import { ShowTransComponent } from './show-trans/show-trans.component';
 import { DashboardAComponent } from './ADMIN/dashboard-a/dashboard-a.component';
 import { HeadComponent } from './head/head.component';
-import { ShowRecComponent } from './ADMIN/show-rec/show-rec.component'; 
+import { ShowReclamationComponent } from './ADMIN/show-rec/show-rec.component'; 
 
 
 @NgModule({
@@ -47,7 +47,7 @@ import { ShowRecComponent } from './ADMIN/show-rec/show-rec.component';
     ShowTransComponent,
     DashboardAComponent,
     HeadComponent,
-    ShowRecComponent
+    ShowReclamationComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +63,8 @@ import { ShowRecComponent } from './ADMIN/show-rec/show-rec.component';
     MatSelectModule,
     MatOptionModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

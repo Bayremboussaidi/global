@@ -1,63 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="show-rec.component.css">
-    <title>Reclamations Table</title>
-</head>
-<body>
-    <div class="container">
-        <h1>Reclamations</h1>
-        <table id="reclamationsTable">
-            <thead>
-                <tr>
-                    <th>Email</th>
-                    <th>Reclamation</th>
-                 
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Dynamic content will be inserted here -->
-            </tbody>
-        </table>
+<div class="show-reclamation-container">
+    <button mat-raised-button color="primary" (click)="toggleReclamations()">
+      Show Reclamations
+    </button>
+    
+    <div *ngIf="displayReclamations" class="reclamation-list">
+      <pre>{{ reclamationList | json }}</pre>
     </div>
-
-    <script>
-        // Function to fetch reclamations data
-        async function fetchReclamations() {
-            try {
-                const response = await fetch('http://localhost:3000/reclamation');
-                const data = await response.json();
-                
-                const tableBody = document.querySelector('#reclamationsTable tbody');
-
-                // Clear existing rows
-                tableBody.innerHTML = '';
-
-                // Check if data is not empty
-                if (data.length > 0) {
-                    data.forEach(reclamation => {
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${reclamation.reclamation_text}</td>
-                            <td>${reclamation.email}</td>
-                        `;
-                        tableBody.appendChild(row);
-                    });
-                } else {
-                    // If no results, display a message
-                    const row = document.createElement('tr');
-                    row.innerHTML = '<td colspan="2">No reclamations found.</td>';
-                    tableBody.appendChild(row);
-                }
-            } catch (error) {
-                console.error('Error fetching reclamations:', error);
-            }
-        }
-
-        // Call the function to fetch reclamations when the page loads
-        fetchReclamations();
-    </script>
-</body>
-</html>
+  </div>
+  

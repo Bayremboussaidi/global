@@ -10,8 +10,14 @@ export class ReclamationService {
 
   constructor(private http: HttpClient) {}
 
+  // Method to add a new reclamation
   addReclamation(email: string, texte: string): Observable<any> {
     const body = { email, reclam: texte };
     return this.http.post(this.apiUrl, body);
+  }
+
+  // Method to get all reclamations
+  getAllReclamations(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
   }
 }
