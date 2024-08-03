@@ -14,6 +14,7 @@ import { DashboardAComponent } from './ADMIN/dashboard-a/dashboard-a.component';
 import { ShowRepComponent } from './show-rep/show-rep.component';
 import { ShowTransComponent } from './show-trans/show-trans.component';
 import { HeadComponent } from './head/head.component';
+import { ShowRecComponent } from './ADMIN/show-rec/show-rec.component';
 
 const routes: Routes = [
   {
@@ -65,6 +66,9 @@ const routes: Routes = [
   },
   {path: 'head',
     component: HeadComponent 
+  },
+  {path: 'reclam-admin',
+    component: ShowRecComponent
   }
 ];
 
