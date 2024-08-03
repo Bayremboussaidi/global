@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    margin: 0; /* Remove default body margin */
+    font-family: Arial, sans-serif; /* Set a default font */
+    background-color: #f4f4f4; /* Light gray background */
+}
+
+.container {
+    background: white; /* White background for the container */
+    padding: 20px; /* Padding around the content */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+h1 {
+    text-align: center; /* Center the heading text */
+    color: #333; /* Darker text color for contrast */
+}
+
+table {
+    width: 100%; /* Make the table full width */
+    border-collapse: collapse; /* Collapse borders */
+    margin-top: 20px; /* Space above the table */
+}
+
+table, th, td {
+    border: 1px solid #ccc; /* Light gray border for table and cells */
+}
+
+th, td {
+    padding: 10px; /* Padding inside table cells */
+    text-align: left; /* Left align text */
+}
+
+th {
+    background-color: #f2f2f2; /* Light gray background for headers */
+    font-weight: bold; /* Bold header text */
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Zebra striping effect on rows */
+}
+
+tr:hover {
+    background-color: #efefef; /* Highlight row on hover */
+}
