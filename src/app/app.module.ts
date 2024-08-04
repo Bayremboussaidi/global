@@ -23,7 +23,7 @@ import { ProfileComponent } from './profil/profile.component';
 import { SigninComponent } from './signin/signin.component';
 import { MatDialogModule } from '@angular/material/dialog'; // Import MatDialogModule
 import { HttpClientModule } from '@angular/common/http';
-import { ShowRepComponent } from './show-rep/show-rep.component';
+import { ShowRepasComponent } from './show-rep/show-rep.component';
 import { ShowTransComponent } from './show-trans/show-trans.component';
 import { DashboardAComponent } from './ADMIN/dashboard-a/dashboard-a.component';
 import { HeadComponent } from './head/head.component';
@@ -43,7 +43,7 @@ import { ShowReclamationComponent } from './ADMIN/show-rec/show-rec.component';
     NavbarComponent,
     HeaderComponent,
     ProfileComponent,
-    ShowRepComponent,
+    ShowRepasComponent,
     ShowTransComponent,
     DashboardAComponent,
     HeadComponent,

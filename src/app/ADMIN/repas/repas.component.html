@@ -1,4 +1,4 @@
-<div class="center-container">
+'<div class="center-container">
   <button mat-raised-button color="primary" (click)="showAddForm = !showAddForm">Ajouter un repas</button>
   <form *ngIf="showAddForm" [formGroup]="repasForm" (ngSubmit)="onSubmit()" class="repas-form">
     <mat-form-field>
@@ -6,7 +6,7 @@
       <input matInput formControlName="nom">
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Prix</mat-label>
+      <mat-label>Prixx</mat-label>
       <input matInput type="number" formControlName="prix">
     </mat-form-field>
     <button mat-raised-button color="accent" type="submit">Submit</button>
@@ -23,4 +23,5 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+ 
 </div>

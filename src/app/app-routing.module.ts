@@ -11,7 +11,7 @@ import { ProfileComponent } from './profil/profile.component';
 import { SigninComponent } from './signin/signin.component';
 import { authGuard } from './auth.guard';
 import { DashboardAComponent } from './ADMIN/dashboard-a/dashboard-a.component';
-import { ShowRepComponent } from './show-rep/show-rep.component';
+import { ShowRepasComponent } from './show-rep/show-rep.component';
 import { ShowTransComponent } from './show-trans/show-trans.component';
 import { HeadComponent } from './head/head.component';
 import { ShowReclamationComponent } from './ADMIN/show-rec/show-rec.component';
@@ -59,7 +59,7 @@ const routes: Routes = [
     component: DashboardAComponent , //canActivate :[ authGuard ] 
   },  
   {path: 'repas',
-    component: ShowRepComponent 
+    component: ShowRepasComponent
   },
   {path: 'trans',
     component: ShowTransComponent 

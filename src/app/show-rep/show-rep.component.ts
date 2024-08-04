@@ -1,53 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-interface Item {
-  id: number;
-  name: string;
-  description: string;
-  selected: boolean;
-}
+import { RepasService } from '../services/repas.service';
 
 @Component({
-  selector: 'app-show-rep',
+  selector: 'app-show-repas',
   templateUrl: './show-rep.component.html',
   styleUrls: ['./show-rep.component.css']
 })
-export class ShowRepComponent implements OnInit {
-onSubmit() {
-throw new Error('Method not implemented.');
-}
+export class ShowRepasComponent implements OnInit {
+  repasList: any[] = [];
+  displayedColumns: string[] = ['nom', 'prix', 'commentaire', 'cin'];
+  displayRepas: boolean = false;
+
+  constructor(private repasService: RepasService) { }
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // Initially, the repas are not displayed
   }
 
-  items: Item[] = [
-    { id: 1, name: 'Item 1', description: 'Description 1', selected: false },
-    { id: 2, name: 'Item 2', description: 'Description 2', selected: false },
-    { id: 3, name: 'Item 3', description: 'Description 3', selected: false }
-  ];
+  toggleRepas() {
+    this.displayRepas = !this.displayRepas;
 
-
-  selectAll(event: any): void {
-    const checked = event.target.checked;
-    this.items.forEach(item => item.selected = checked);
+    if (this.displayRepas) {
+      this.loadRepas();
+    }
   }
 
-  deleteSelected(): void {
-    this.items = this.items.filter(item => !item.selected);
+  loadRepas() {
+    this.repasService.getAllRepas().subscribe(
+      (data: any[]) => {
+        this.repasList = data;
+      },
+      (error) => {
+        console.error('Error fetching repas', error);
+      }
+    );
   }
-
-  /*onSubmit(): void {
-    const selectedItems = this.items.filter(item => item.selected);
-    this.http.post('http://your-api-url.com/submit', selectedItems).subscribe(response => {
-      console.log('POST request successful', response);
-    }, error => {
-      console.error('POST request error', error);
-    });
-  }*/
 }
-
-
-
-
-

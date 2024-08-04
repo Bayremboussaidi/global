@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RepasService } from '../../services/repas.service';
 
 @Component({
   selector: 'app-repas',
@@ -7,26 +8,39 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./repas.component.css']
 })
 export class RepasComponent implements OnInit {
-  showAddForm: boolean = false;
-  repasForm: FormGroup;
+  repasForm!: FormGroup;
   repasList: any[] = [];
-  displayedColumns: string[] = ['Nom du repas', 'Prix'];
+  displayedColumns: string[] = ['nom', 'prix'];
+  showAddForm: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private repasService: RepasService) { }
+
+  ngOnInit(): void {
+    this.initializeForm();
+  }
+
+  initializeForm() {
     this.repasForm = this.formBuilder.group({
       nom: ['', Validators.required],
-      prix: ['', Validators.required]
-      
+      prix: ['', Validators.required],
+      commentaire: ['', Validators.required],
+      cin: ['', Validators.required]
     });
   }
 
-  ngOnInit(): void {}
-
   onSubmit() {
     if (this.repasForm.valid) {
-      this.repasList.push(this.repasForm.value);
-      this.repasForm.reset();
-      this.showAddForm = false;
+      const repasData = this.repasForm.value;
+      this.repasService.addRepas(repasData.nom, repasData.prix, repasData.commentaire, repasData.cin).subscribe(
+        (response) => {
+          this.repasList.push(repasData);
+          this.repasForm.reset();
+          this.showAddForm = false;
+        },
+        (error) => {
+          console.error('Error adding repas', error);
+        }
+      );
     }
   }
 }
