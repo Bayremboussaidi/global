@@ -2,10 +2,11 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 export interface RepasCommand {
-    nomRepas: string;   // Name of the meal
+    nom_du_repas: string;   // Name of the meal
     commentaire: string; // Comments regarding the meal
     cin: string;        // Identifier (ex: customer ID)
     quantity: number;   // Quantity of meals
@@ -22,16 +23,28 @@ export class CommanderepasService {
     constructor(private http: HttpClient) { }
 
     // Method to add a new repas command
-    addRepasCommand(command: RepasCommand): Observable<any> {
-        return this.http.post(this.apiUrl, command, {
+    addRepasCommand(command: RepasCommand): Observable<RepasCommand> {
+        return this.http.post<RepasCommand>(this.apiUrl, command, {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json'
             })
-        });
+        }).pipe(
+            catchError(this.handleError<RepasCommand>('addRepasCommand'))
+        );
     }
 
     // Method to get all repas commands
     getAllRepasCommands(): Observable<RepasCommand[]> {
-        return this.http.get<RepasCommand[]>(this.apiUrl);
+        return this.http.get<RepasCommand[]>(this.apiUrl).pipe(
+            catchError(this.handleError<RepasCommand[]>('getAllRepasCommands', []))
+        );
+    }
+
+    // Error handling method
+    private handleError<T>(operation = 'operation', result?: T) {
+        return (error: any): Observable<T> => {
+            console.error(`${operation} failed: ${error.message}`); // Log to console
+            return of(result as T); // Let the app keep running by returning an empty result
+        };
     }
 }

@@ -5,22 +5,72 @@
     <table mat-table [dataSource]="repasList" class="mat-elevation-z8 repas-table">
       <ng-container matColumnDef="nom">
         <th mat-header-cell *matHeaderCellDef> Nom du repas </th>
-        <td mat-cell *matCellDef="let repas"> {{repas.nom}} </td>
+        <td mat-cell *matCellDef="let repas"> {{ repas.nom }} </td>
       </ng-container>
+
       <ng-container matColumnDef="prix">
         <th mat-header-cell *matHeaderCellDef> Prix </th>
-        <td mat-cell *matCellDef="let repas"> {{repas.prix | currency}} </td>
+        <td mat-cell *matCellDef="let repas"> {{ repas.prix | currency }} </td>
       </ng-container>
+
       <ng-container matColumnDef="commentaire">
-        <th mat-header-cell *matHeaderCellDef> Commentaire </th>
-        <td mat-cell *matCellDef="let repas"> {{repas.commentaire}} </td>
+        <th mat-header-cell *matHeaderCellDef>  </th>
+        <td mat-cell *matCellDef="let repas"> {{ repas.commentaire }} </td>
       </ng-container>
+
       <ng-container matColumnDef="cin">
-        <th mat-header-cell *matHeaderCellDef> CIN </th>
-        <td mat-cell *matCellDef="let repas"> {{repas.cin}} </td>
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let repas"> {{ repas.cin }} </td>
       </ng-container>
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+    <!-- New input form -->
+    <form [formGroup]="newRepasForm" (ngSubmit)="addRepas()">
+      <mat-form-field appearance="fill">
+        <mat-label>Nom du repas</mat-label>
+        <input matInput formControlName="nom" placeholder="Nom du repas" required>
+        <mat-error *ngIf="newRepasForm.get('nom')?.hasError('required')">
+          Le nom du repas est requis.
+        </mat-error>
+        <mat-error *ngIf="newRepasForm.get('nom')?.hasError('nameExists')">
+          Ce nom de repas existe  dans la liste.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Commentaire</mat-label>
+        <input matInput formControlName="commentaire" placeholder="Commentaire" required>
+        <mat-error *ngIf="newRepasForm.get('commentaire')?.hasError('required')">
+          Le commentaire est requis.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>CIN Quantité</mat-label>
+        <input matInput type="number" formControlName="cin" placeholder="CIN Quantité" required>
+        <mat-error *ngIf="newRepasForm.get('cin')?.hasError('required')">
+          La quantité est requise et doit être supérieure à 0.
+        </mat-error>
+        <mat-error *ngIf="newRepasForm.get('cin')?.hasError('min') && newRepasForm.get('cin')?.value < 1">
+          La quantité doit être au moins 1.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Prix</mat-label>
+        <input matInput type="number" formControlName="prix" placeholder="Prix" required>
+        <mat-error *ngIf="newRepasForm.get('prix')?.hasError('required')">
+          Le prix est requis et doit être supérieur ou égal à 0.
+        </mat-error>
+        <mat-error *ngIf="newRepasForm.get('prix')?.hasError('min') && newRepasForm.get('prix')?.value < 0">
+          Le prix doit être au moins 0.
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button type="submit" color="accent">Ajouter Repas</button>
+    </form>
   </div>
 </div>

@@ -27,7 +27,10 @@ import { ShowRepasComponent } from './show-rep/show-rep.component';
 import { ShowTransComponent } from './show-trans/show-trans.component';
 import { DashboardAComponent } from './ADMIN/dashboard-a/dashboard-a.component';
 import { HeadComponent } from './head/head.component';
-import { ShowReclamationComponent } from './ADMIN/show-rec/show-rec.component'; 
+import { ShowReclamationComponent } from './ADMIN/show-rec/show-rec.component';
+import { RepasListComponent } from './ADMIN/repas-list/repas-list.component';
+import { TransportListComponent } from './ADMIN/transport-list/transport-list.component';
+
 
 
 @NgModule({
@@ -47,7 +50,9 @@ import { ShowReclamationComponent } from './ADMIN/show-rec/show-rec.component';
     ShowTransComponent,
     DashboardAComponent,
     HeadComponent,
-    ShowReclamationComponent
+    ShowReclamationComponent,
+    RepasListComponent,
+    TransportListComponent
   ],
   imports: [
     BrowserModule,

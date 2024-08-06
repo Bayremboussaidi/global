@@ -33,7 +33,7 @@ export class ShowTransComponent {
 
   onSubmit(): void {
     const selectedItems = this.items.filter(item => item.selected);
-    this.http.post('http://your-api-url.com/submit', selectedItems).subscribe(response => {
+    this.http.post('http://localhost:8084/commanderepas', selectedItems).subscribe(response => {
       console.log('POST request successful', response);
     }, error => {
       console.error('POST request error', error);
