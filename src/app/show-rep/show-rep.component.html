@@ -27,15 +27,18 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
+
+
+
     <!-- New input form -->
     <form [formGroup]="newRepasForm" (ngSubmit)="addRepas()">
       <mat-form-field appearance="fill">
         <mat-label>Nom du repas</mat-label>
-        <input matInput formControlName="nom" placeholder="Nom du repas" required>
-        <mat-error *ngIf="newRepasForm.get('nom')?.hasError('required')">
+        <input matInput formControlName="nom_du_repas" placeholder="Nom du repas" required>
+        <mat-error *ngIf="newRepasForm.get('nom_du_repas')?.hasError('required')">
           Le nom du repas est requis.
         </mat-error>
-        <mat-error *ngIf="newRepasForm.get('nom')?.hasError('nameExists')">
+        <mat-error *ngIf="newRepasForm.get('nom_du_repas')?.hasError('nameExists')">
           Ce nom de repas existe  dans la liste.
         </mat-error>
       </mat-form-field>
@@ -49,24 +52,24 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>CIN Quantité</mat-label>
-        <input matInput type="number" formControlName="cin" placeholder="CIN Quantité" required>
+        <mat-label>CIN </mat-label>
+        <input matInput type="number" formControlName="cin" placeholder="CIN " required>
         <mat-error *ngIf="newRepasForm.get('cin')?.hasError('required')">
-          La quantité est requise et doit être supérieure à 0.
+         
         </mat-error>
-        <mat-error *ngIf="newRepasForm.get('cin')?.hasError('min') && newRepasForm.get('cin')?.value < 1">
-          La quantité doit être au moins 1.
+        <mat-error *ngIf="newRepasForm.get('cin')?.hasError('min') && newRepasForm.get('cin')?.value < 12345">
+          num carte d identite est obligatoire
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Prix</mat-label>
-        <input matInput type="number" formControlName="prix" placeholder="Prix" required>
+        <mat-label>Quantity</mat-label>
+        <input matInput type="number" formControlName="quantity" placeholder="Quantity" required>
         <mat-error *ngIf="newRepasForm.get('prix')?.hasError('required')">
           Le prix est requis et doit être supérieur ou égal à 0.
         </mat-error>
-        <mat-error *ngIf="newRepasForm.get('prix')?.hasError('min') && newRepasForm.get('prix')?.value < 0">
-          Le prix doit être au moins 0.
+        <mat-error *ngIf="newRepasForm.get('Quantity')?.hasError('min') && newRepasForm.get('prix')?.value < 1">
+          La quantité doit être au moins 1.
         </mat-error>
       </mat-form-field>
 
