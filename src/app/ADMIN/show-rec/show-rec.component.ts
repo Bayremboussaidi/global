@@ -13,11 +13,11 @@ export class ShowReclamationComponent implements OnInit {
   constructor(private reclamationService: ReclamationService) { }
 
   ngOnInit(): void {
-    // Initially, the reclamations are not displayed
+    this.toggleReclamations() ;
   }
 
   toggleReclamations() {
-    this.displayReclamations = !this.displayReclamations;
+    this.displayReclamations  = true ;/*= !this.displayReclamations;*/
 
     if (this.displayReclamations) {
       this.loadReclamations();

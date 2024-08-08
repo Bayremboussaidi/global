@@ -1,7 +1,5 @@
 <div class="show-reclamation-container">
-    <button mat-raised-button color="primary" (click)="toggleReclamations()">
-      Show Reclamations
-    </button>
+   <div class="title">Liste des reclamations</div>
     
     <div *ngIf="displayReclamations" class="reclamation-list">
       <pre>{{ reclamationList | json }}</pre>

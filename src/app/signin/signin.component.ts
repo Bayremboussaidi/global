@@ -23,7 +23,7 @@ export class SigninComponent implements OnInit {
     if (this.loginForm.valid) {
       
       
-      console.log('mriglaa')
+      
       
       this.router.navigate(['/dashboard']);
     }
