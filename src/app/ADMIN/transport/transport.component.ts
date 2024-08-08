@@ -28,7 +28,10 @@ export class TransportComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.onSubmit() ;
+    this.showAddForm = true ;
+  }
 
   onSubmit() {
     if (this.transportForm.valid) {

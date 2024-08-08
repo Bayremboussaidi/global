@@ -50,3 +50,11 @@ body, html {
     flex: 1 1 calc(33.333% - 20px); /* Three columns layout with space between */
   }
 }
+
+.title {
+  font-weight: bold;  /* Makes the text bold */
+  white-space: nowrap; /* Prevents text from wrapping to the next line */
+  overflow: hidden;    /* Hides any overflow text if it extends beyond the container */
+  text-overflow: ellipsis; /* Adds ellipsis (...) for overflowing text */
+  font-size: 24px; 
+}

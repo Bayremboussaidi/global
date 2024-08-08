@@ -38,8 +38,7 @@ export class ShowRepasComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // You can optionally load repas here if needed initially
-  }
+   this.toggleRepas()  }
 
   toggleRepas() {
     this.displayRepas = !this.displayRepas;
