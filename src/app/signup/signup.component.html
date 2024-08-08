@@ -53,6 +53,13 @@
             <div *ngIf="signupForm.get('password')?.hasError('required')" class="error">Password is required</div>
             <div *ngIf="signupForm.get('password')?.hasError('minlength')" class="error">Password should be at least 6 characters long</div>
           </div>
+
+          <div class="form-field">
+            <label>CIN</label>
+            <input type="cin" placeholder="Enter your Num Id Card" formControlName="cin" required>
+            <div *ngIf="signupForm.get('cin')?.hasError('required')" class="error">cin is required</div>
+            <div *ngIf="signupForm.get('cin')?.hasError('minlength')" class="error">Password should be at least 6 int long</div>
+          </div>
         </div>
         <div class="signup-actions">
           <button type="submit">Sign Up</button>

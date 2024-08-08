@@ -1,5 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-//import { UsersService } from 'src/app/services/users.service';
+import { UserService } from '../../services/user.service'; // Ensure the path is correct
+
+interface User {
+  id: number;      // Unique identifier for each user
+  nom: string;     // Last name
+  prenom: string;  // First name
+  sexe: 'Masculin' | 'Féminin' | 'Autre'; // Gender
+  tel: string;     // Phone number
+  email: string;   // Email address
+  poste: string;   // Job title/position
+  cin: string;     // National identity card number
+}
 
 @Component({
   selector: "app-users",
@@ -7,89 +18,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ["./users.component.css"],
 })
 export class UsersComponent implements OnInit {
-ngOnInit(): void {
-  throw new Error('Method not implemented.');
-}
-selectedRow(_t18: any) {
-throw new Error('Method not implemented.');
-}
+  users: User[] = []; // Declare and initialize a users property
 
-tableData = [
-  { jobId: 42235, customerName: 'John Doe', amount: 350, paymentStatus: 'Pending' },
-  { jobId: 42442, customerName: 'Jennifer Smith', amount: 220, paymentStatus: 'Pending' },
-  { jobId: 42257, customerName: 'John Smith', amount: 341, paymentStatus: 'Pending' },
-  { jobId: 42311, customerName: 'John Carpenter', amount: 115, paymentStatus: 'Pending' },
-];
-}
-/*user: any;
-closeSidenav() {
-throw new Error('Method not implemented.');
-}
-prevPage() {
-throw new Error('Method not implemented.');
-}
-nextPage() {
-throw new Error('Method not implemented.');
-}
-  usersData: any;
-  displayedColumns = [
-    "firstName",
-    "secondName",
-    "mobile",
-    "gender",
-    "dob",
-    "email",
-    "hobbies",
-    "createdAt",
-    "email_Verified",
-    "activated",
-  ];
-  pageIndex = 0;
-  pageSize = 10;
-  pageSizeOptions: number[] = [5, 10, 15, 20, 25, 50];
-  sideNavOpen = false;
-  selectedRowIndex=-1;
-totalPages: any;
- // user;
-
-  //constructor(private service: UsersService) {}
+  constructor(private userService: UserService) {} 
 
   ngOnInit(): void {
-    this.loadUserDetails(this.pageIndex, this.pageSize);
+    this.display(); // Fetch users when the component initializes
   }
-  loadUserDetails(pageIndex: number, pageSize: number) {
-    throw new Error('Method not implemented.');
+
+  display() {
+    this.userService.getUsers().subscribe(
+      (response: User[] | any) => {
+        this.users = response; // Store the users in the component property
+        console.log(this.users); // Optional: Log the users to the console
+      },
+      (error) => {
+        console.error('Error fetching users:', error); // Handle errors here
+      }
+    );
   }
-  //loadUserDetails(pageIndex, pageSize) {
-    //this.service.getUsersByPagination(pageIndex, pageSize).subscribe((res) => {
-     // this.usersData = res;
-    //});
-  }
- // handlePage(event) {
-   // this.loadUserDetails(event.pageIndex, event.pageSize);
- // }
-
- /* closeSidenav() {
-    this.selectedRowIndex = -1;
-    this.sideNavOpen = false;
-  }*/
-
- // selectedRow(row) {
-    // console.log(row)
-    // console.log(row._id);
-    /*this.user=row.user;
-    this.sideNavOpen = true;
-    this.selectedRowIndex = row._id;
-  }}
-  
-
-function closeSidenav() {
-  throw new Error('Function not implemented.');
 }
-
-function selectedRow(row: any) {
-  throw new Error('Function not implemented.');
-} */
-
-
-

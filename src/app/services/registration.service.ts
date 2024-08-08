@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class RegistrationService {
 
-  private apiUrl = 'http://localhost:4200'; 
+  private apiUrl = 'http://localhost:8084/signup'; 
 
   constructor(private http: HttpClient) { }
 
@@ -16,12 +16,13 @@ export class RegistrationService {
     nom: string;
     prenom: string;
     sexe: string;
-    tel: string;
+    tel: number;
     email: string;
     poste: string;
     password: string;
+    cin: number;
   }): Observable<any> {
-    const url = `${this.apiUrl}/signup`; 
+    const url = `${this.apiUrl}`; 
 
     return this.http.post<any>(url, userData).pipe(
       catchError(this.handleError<any>('signup'))

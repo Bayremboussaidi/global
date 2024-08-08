@@ -13,15 +13,15 @@ const router = express.Router();
 
 
 router.post('/signup', async (req, res) => {
-  const { nom, prenom, sexe, tel, email, poste, password } = req.body;
+  const { nom, prenom, sexe, tel, email, poste, password , cin } = req.body;
 
-  if (!nom || !prenom || !sexe || !tel || !email || !poste || !password) {
+  if (!nom || !prenom || !sexe || !tel || !email || !poste || !password || cin) {
     return res.status(400).send('All fields are required');
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const user = { nom, prenom, sexe, tel, email, poste, password: hashedPassword };
+  const user = { nom, prenom, sexe, tel, email, poste, password: hashedPassword , cin };
 
   const query = 'INSERT INTO users SET ?';
 

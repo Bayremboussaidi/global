@@ -20,7 +20,9 @@ export class SignupComponent implements OnInit {
       tel: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       poste: ['ingenieur', Validators.required], 
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]] , 
+      cin: ['00', Validators.required], 
+
     });
   }
 
@@ -28,10 +30,10 @@ export class SignupComponent implements OnInit {
     if (this.signupForm.valid) {
       console.log(this.signupForm.value);
 
-      const { nom, prenom, sexe, tel, email, poste, password } = this.signupForm.value;
+      const { nom, prenom, sexe, tel, email, poste, password ,cin} = this.signupForm.value;
 
       // Ensure register method is called with an object
-      this.register.register({ nom, prenom, sexe, tel, email, poste, password }).subscribe({
+      this.register.register({ nom, prenom, sexe, tel, email, poste, password , cin }).subscribe({
         next: (response) => {
           console.log('Registration successful', response);
         },
