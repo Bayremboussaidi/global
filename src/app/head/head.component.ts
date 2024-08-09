@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { LoginService } from '../services/login.service';  // Adjusted import to use the correct class name
-
+import {AuthService} from "../services/auth.service"
 
 @Component({
   selector: 'app-head',
@@ -8,10 +7,10 @@ import { LoginService } from '../services/login.service';  // Adjusted import to
   styleUrls: ['./head.component.css']
 })
 export class HeadComponent {
-  constructor(private loginService: LoginService ) {  // Fixed constructor syntax
+  constructor(private authservice: AuthService ) {  // Fixed constructor syntax
   }
 
-  logout() {
-    this.loginService.logout();  // Properly use the service with correct casing
+  logout(): void {
+    this.authservice.logout();
   }
 }

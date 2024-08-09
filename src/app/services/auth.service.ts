@@ -1,19 +1,43 @@
+// AuthService.js
+import axios from 'axios';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' // This makes it available throughout the app
 })
+
 export class AuthService {
-  private userRole: string;
 
-  constructor() {
-    // This should be replaced with real authentication logic
-    this.userRole = localStorage.getItem('userRole') || 'guest'; // Mock role, replace with actual logic
-  }
+  static apiUrl: string;
+   apiUrl = 'http://localhost:8084/signin'; // Replace with your actual API URL
+    constructor( private router : Router) { }
 
-  getUserRole(): string {
-    return this.userRole;
-  }
+    static async signin(email: string, password: string) {
+      try {
+        const response =  axios.post(this.apiUrl, {
+            email,
+            password
+        });
+        return (await response).data; // Success, return user data and token
+    } catch (error :any) {
+        if (error.response) {
+            throw new Error(error.response.data || 'Login failed');
+        } else {
+            throw new Error('Server error');
+        }
+    }
+    }
+    
 
-  // Other authentication methods such as login, logout, etc.
+    setUserDetails(userData: any): void {
+      // Store user data as a JSON string
+      localStorage.setItem('user', JSON.stringify(userData));
+    }
+
+    logout(): void {
+      localStorage.removeItem('user'); // Clear user data from local storage
+      this.router.navigate(['/signin']); // Redirect to login page
+    }
 }
+
