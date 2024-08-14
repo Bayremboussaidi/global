@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AuthService} from "../services/auth.service"
+import {LoginService} from "../services/login.service"
 
 @Component({
   selector: 'app-head',
@@ -7,10 +7,10 @@ import {AuthService} from "../services/auth.service"
   styleUrls: ['./head.component.css']
 })
 export class HeadComponent {
-  constructor(private authservice: AuthService ) {  // Fixed constructor syntax
+  constructor(private loginservice: LoginService ) {  // Fixed constructor syntax
   }
 
   logout(): void {
-    this.authservice.logout();
+    this.loginservice.logout();
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';  // Adjust the path if necessary (use default import)
+  
 import { LoginService } from '../services/login.service'; // Adjust the path if necessary (use default import)
 
 @Component({
@@ -14,8 +14,7 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
-    private authService: AuthService,
+    private router: Router,    
     private loginService: LoginService
   ) {}
 
@@ -35,14 +34,14 @@ export class SigninComponent implements OnInit {
 
         // Assuming the response contains user data in the expected format
         const userData = {
-          role: response.role || 'ingenieur', // get user role from your backend response
+          role: response.role || 'ingenieur' || 'admin', // get user role from your backend response
           nom: response.nom,
           prenom: response.prenom,
           cin: response.cin
         };
 
         // Store user details in AuthService
-        this.authService.setUserDetails(userData); // Call the method to set user data
+        this.loginService.setUserDetails(userData); // Call the method to set user data*/
 
         // Navigate to the dashboard after successful login
         this.router.navigate(['/dashboard']);

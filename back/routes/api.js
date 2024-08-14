@@ -13,29 +13,34 @@ const router = express.Router();
 
 
 router.post('/signup', async (req, res) => {
-  const { nom, prenom, sexe, tel, email, poste, password , cin } = req.body;
+  try {
+    const { nom, prenom, sexe, tel, email, poste, password, cin } = req.body;
 
-  if (!nom || !prenom || !sexe || !tel || !email || !poste || !password || cin) {
-    return res.status(400).send('All fields are required');
-  }
-
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  const user = { nom, prenom, sexe, tel, email, poste, password: hashedPassword , cin };
-
-  const query = 'INSERT INTO users SET ?';
-
-  db.query(query, user, (err, result) => {
-    if (err) {
-      if (err.code === 'ER_DUP_ENTRY') {
-        return res.status(400).send('Email already exists');
-      }
-      return res.status(500).send('Server error');
+    if (!nom || !prenom || !sexe || !tel || !email || !poste || !password || !cin) {
+      return res.status(400).send('All fields are required');
     }
-    res.status(201).send('User registered');
-  });
-});
 
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = { nom, prenom, sexe, tel, email, poste, password: hashedPassword, cin };
+
+    const query = 'INSERT INTO users SET ?';
+
+    db.query(query, user, (err, result) => {
+      if (err) {
+        console.error(err); // Log the error for debugging
+        if (err.code === 'ER_DUP_ENTRY') {
+          return res.status(400).send('Email already exists');
+        }
+        return res.status(500).send('Server error');
+      }
+      res.status(201).json({ message: 'User registered', user: { nom, prenom, sexe, tel, email, poste, cin } });
+    });
+  } catch (error) {
+    console.error(error); // Log the error for debugging
+    res.status(500).send('Unexpected error occurred');
+  }
+});
 
 
 /*signin*/
