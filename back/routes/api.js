@@ -116,40 +116,51 @@ router.post('/signin', async (req, res) => {
 
 //transport
 
-  router.post('/transport', (req, res) => {
-    const { adresseDest, dateDepart, heureDepart } = req.body;
-    const query = 'INSERT INTO transport (adresseDest, dateDepart, heureDepart) VALUES (?, ?, ?)';
-    db.query(query, [adresseDest, dateDepart, heureDepart], (err, result) => {
-      if (err) {
-        console.error('Error inserting transport:', err);
-        res.status(500).send('Error inserting transport');
-      } else {
-        res.status(200).send('Transport added successfully');
-      }
-    });
-  });
 
-  router.get('/transport', (req, res) => {
+router.post('/transport', (req, res) => {
+  console.log(req.body); // Debugging line
+
+  const { adresseDest, dateDepart, NbrePlace, numID } = req.body;
+
+  // Validate that all required fields are present
+  if (!adresseDest || !dateDepart || typeof NbrePlace === 'undefined'|| typeof numID === 'undefined') {
+      return res.status(400).json({ error: 'All fields (adresseDest, dateDepart, NbrePlace, and numID) are required' });
+  }
+
+  const query = 'INSERT INTO transport (adresseDest, dateDepart, NbrePlace, numID) VALUES (?, ?, ?, ?)';
+  db.query(query, [adresseDest, dateDepart, NbrePlace, numID], (err, result) => {
+      if (err) {
+          console.error('Error inserting transport:', err);
+          return res.status(500).json({ error: 'Error inserting transport' });
+      } else {
+          return res.status(201).json({ message: 'Transport added successfully', transportId: result.insertId });
+      }
+  });
+});
+
+// GET endpoint to fetch all transports
+router.get('/transport', (req, res) => {
     const query = 'SELECT * FROM transport';
     db.query(query, (err, results) => {
-      if (err) {
-        console.error('Error fetching transport list:', err);
-        res.status(500).send('Error fetching transport list');
-      } else {
-        res.status(200).json(results);
-      }
+        if (err) {
+            console.error('Error fetching transport list:', err);
+            return res.status(500).json({ error: 'Error fetching transport list' });
+        } else {
+            return res.status(200).json(results);
+        }
     });
-  });
+});
+
 
   
 /*repas*/
 
 router.post('/repas', (req, res) => {
   const { nom, prix } = req.body;
-  const query = 'INSERT INTO repas (nom, prix) VALUES (?, ?)';
+  const query = 'INSERT INTO repass (nom, prix) VALUES (?, ?)';
   db.query(query, [nom, prix], (err, result) => {
     if (err) {
-      console.error('Error inserting repas:', err);
+      console.error('Error inserting repass:', err);
       res.status(500).send('Error inserting repas');
     } else {
       res.status(200).send('Repas added successfully');
@@ -159,7 +170,7 @@ router.post('/repas', (req, res) => {
 
 
 router.get('/repas', (req, res) => {
-  const query = 'SELECT * FROM repas';
+  const query = 'SELECT * FROM repass';
   db.query(query, (err, results) => {
     if (err) {
       console.error('Error fetching repas:', err);

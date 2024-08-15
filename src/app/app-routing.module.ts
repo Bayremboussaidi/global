@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { RepasComponent } from './ADMIN/repas/repas.component';
-import { TransportComponent } from './ADMIN/transport/transport.component';
+import { TransportComponent } from './transport/transport.component';
 import { UsersComponent } from './ADMIN/users/users.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -12,7 +12,7 @@ import { SigninComponent } from './signin/signin.component';
 //import { authGuard } from './auth.guard';
 import { DashboardAComponent } from './ADMIN/dashboard-a/dashboard-a.component';
 import { ShowRepasComponent } from './show-rep/show-rep.component';
-import { ShowTransComponent } from './show-trans/show-trans.component';
+import { ShowTransComponent } from './ADMIN/show-trans/show-trans.component';
 import { HeadComponent } from './head/head.component';
 import { ShowReclamationComponent } from './ADMIN/show-rec/show-rec.component';
 import { RepasListComponent } from './ADMIN/repas-list/repas-list.component';
@@ -73,11 +73,13 @@ const routes: Routes = [
     component: ShowReclamationComponent
   },
   {path: 'commanderepas',
-    component: RepasListComponent //repas commands list
+    component: RepasListComponent 
   },
   {path: 'commandetrans',
-    component: TransportListComponent //transport command list
+    component: TransportListComponent 
   }
+
+  
 ];
 
 @NgModule({

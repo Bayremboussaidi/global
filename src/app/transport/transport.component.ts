@@ -6,7 +6,8 @@ import { TransportService } from 'src/app/services/transport.service';
 interface Transport {
   adresseDest: string;
   dateDepart: string; // Use Date type if you need Date objects
-  heureDepart: string; // Use string for time as per your requirement
+  NbrePlace: string; // Use string for time as per your requirement
+  numID : number;
 }
 
 @Component({
@@ -24,7 +25,8 @@ export class TransportComponent implements OnInit {
     this.transportForm = this.formBuilder.group({
       adresseDest: ['', Validators.required],
       dateDepart: ['', Validators.required],
-      heureDepart: ['', Validators.required]
+      heureDepart: ['', Validators.required],
+      numID: ['', Validators]
     });
   }
 
@@ -40,8 +42,8 @@ export class TransportComponent implements OnInit {
       this.transportservice.add(newTransport).subscribe(
           // Use Transport as the type for addedTransport
           (addedTransport: Transport) => { 
-              this.transportList.push(addedTransport); // Add the new transport to the list
-              this.transportForm.reset(); // Clear the form
+              this.transportList.push(addedTransport); 
+              //this.transportForm.reset(); 
               this.showAddForm = false;
           },
           error => {

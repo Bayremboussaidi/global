@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TransportService } from '../services/transport.service';
+import { TransportService } from '../../services/transport.service';
 
 interface Transport {
   id? : number ;
   adresseDest: string;
   dateDepart: string; // Use Date type if you need Date objects
-  heureDepart: string; // Use string for time as per your requirement
-  selected?: boolean;
+  NbrePlace: string;
+  numID : number;
 }
 
 @Component({
@@ -20,12 +20,12 @@ selectAll($event: Event) {
 throw new Error('Method not implemented.');
 }
   transports: Transport[] = [];
-    displayedColumns: string[] = ['adresseDest', 'dateDepart', 'heureDepart', 'selected'];
+    displayedColumns: string[] = ['adresseDest', 'dateDepart', 'NbrePlace', 'numID'];
 
   constructor(private transportService: TransportService) { }
 
   ngOnInit(): void {
-    this.display(); // Call display on component initialization
+    this.display(); 
   }
 
   display(): void {
