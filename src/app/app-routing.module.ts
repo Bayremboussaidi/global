@@ -33,8 +33,8 @@ const routes: Routes = [
     component: RepasComponent , //canActivate :[ authGuard ] 
   },
   {
-    path: 'transport-a',   //add transport trajects
-    component: TransportComponent, //canActivate :[ authGuard ] 
+    path: 'transport',   
+    component: TransportComponent, //canActivate :[ authGuard ] //add transport trajects
   },
   {
     path: 'users-a',

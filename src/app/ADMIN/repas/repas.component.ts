@@ -23,15 +23,17 @@ export class RepasComponent implements OnInit {
     this.repasForm = this.formBuilder.group({
       nom: ['', Validators.required],
       prix: ['', Validators.required],
-      commentaire: ['', Validators.required],
-      cin: ['', Validators.required]
+     
     });
   }
 
   onSubmit() {
     if (this.repasForm.valid) {
       const repasData = this.repasForm.value;
-      this.repasService.addRepas(repasData.nom, repasData.prix, repasData.commentaire, repasData.cin).subscribe(
+      this.repasService.addRepas({ 
+        nom: repasData.nom, 
+        prix: repasData.prix 
+      }).subscribe(
         (response) => {
           this.repasList.push(repasData);
           this.repasForm.reset();

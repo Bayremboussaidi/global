@@ -5,7 +5,7 @@ import { TransportService } from '../../services/transport.service';
 interface Transport {
   id? : number ;
   adresseDest: string;
-  dateDepart: string; // Use Date type if you need Date objects
+  dateDepart: string; 
   NbrePlace: string;
   numID : number;
 }
@@ -31,7 +31,7 @@ throw new Error('Method not implemented.');
   display(): void {
     this.transportService.getAll().subscribe({
       next: (data) => {
-        this.transports = data; // Ensure data is of the correct Transport[]
+        this.transports = data; 
       },
       error: (err) => {
         console.error('Error fetching transports', err);
