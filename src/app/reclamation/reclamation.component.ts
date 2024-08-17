@@ -18,6 +18,7 @@ export class ReclamationComponent implements OnInit {
   ngOnInit(): void {
     this.initializeForm();
     this.loadReclamations();
+    this.showAddForm = true ;
   }
 
   initializeForm() {

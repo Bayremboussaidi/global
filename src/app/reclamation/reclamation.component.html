@@ -1,5 +1,5 @@
 <div class="reclamation-container">
-  <button mat-raised-button color="primary" (click)="showAddForm = !showAddForm">Ajouter une réclamation</button>
+  <p class="title">  Ajouter une réclamation  </p> 
   
   <form *ngIf="showAddForm" [formGroup]="reclamationForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
