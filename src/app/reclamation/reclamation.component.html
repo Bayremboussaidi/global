@@ -1,9 +1,9 @@
 <div class="reclamation-container">
-  <button mat-raised-button color="primary" (click)="showAddForm = !showAddForm">Ajouter une réclamation</button>
+  <!--button mat-raised-button color="primary" (click)="showAddForm = !showAddForm">Ajouter une réclamation</button-->
   
   <form *ngIf="showAddForm" [formGroup]="reclamationForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
-      <mat-label>Email d'envoi</mat-label>
+      <mat-label>Email d' émetteur</mat-label>
       <input matInput formControlName="emailEnvoi">
     </mat-form-field>
     <mat-form-field>

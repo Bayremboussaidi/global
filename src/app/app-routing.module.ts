@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { RepasComponent } from './ADMIN/repas/repas.component';
-import { TransportComponent } from './transport/transport.component';
+import { AddTransComponent } from './add-trans/add-trans.component';
 import { UsersComponent } from './ADMIN/users/users.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -34,7 +34,7 @@ const routes: Routes = [
   },
   {
     path: 'transport-a',   
-    component: TransportComponent, //canActivate :[ authGuard ] //add transport trajects
+    component: AddTransComponent, //canActivate :[ authGuard ] //add transport trajects
   },
   {
     path: 'users-a',

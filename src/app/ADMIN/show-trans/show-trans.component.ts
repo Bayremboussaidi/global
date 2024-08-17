@@ -6,7 +6,7 @@ interface Transport {
   id? : number ;
   adresseDest: string;
   dateDepart: string; 
-  NbrePlace: string;
+  NbrePlace: number;
   numID : number;
 }
 
