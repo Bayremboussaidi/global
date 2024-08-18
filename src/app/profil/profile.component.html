@@ -3,16 +3,10 @@
     <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
       <div class="profile-box">
         <div class="profile-header">
-          <h2>Update Profile</h2>
+          <h2>mise à jour ton Profile</h2>
         </div>
         <div class="profile-content">
-          <div class="form-field">
-            <label for="profilePic">Profile Picture</label>
-            <input type="file" id="profilePic" (change)="onFileChange($event)" />
-            <div *ngIf="profilePicUrl">
-              <img [src]="profilePicUrl" alt="Profile Picture" class="profile-pic-preview" />
-            </div>
-          </div>
+          
 
           <div class="form-field">
             <label for="nom">Nom</label>
@@ -27,7 +21,7 @@
           <div class="form-field">
             <label for="sexe">Sexe</label>
             <select id="sexe" formControlName="sexe">
-              <option value="" disabled>Select your gender</option>
+              <option value="" disabled>Selecter ton sexe</option>
               <option value="Female">Female</option>
               <option value="Male">Male</option>
             </select>
@@ -35,24 +29,24 @@
 
           <div class="form-field">
             <label for="tel">Tel</label>
-            <input type="tel" id="tel" placeholder="Enter your phone number" formControlName="tel">
+            <input type="tel" id="tel" placeholder="tel phone num" formControlName="tel">
           </div>
           
           <!-- New Email Field -->
           <div class="form-field">
             <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Enter your email" formControlName="email">
+            <input type="email" id="email" placeholder=" email" formControlName="email">
           </div>
 
           <!-- New Password Field -->
           <div class="form-field">
             <label for="password">Mot de passe</label>
-            <input type="password" id="password" placeholder="Enter your password" formControlName="password">
+            <input type="password" id="password" placeholder="donner ton mon de passe " formControlName="password">
           </div>
 
           <div class="form-field">
             <label for="poste">Poste</label>
-            <input type="text" id="poste" placeholder="Donner ton poste du travail" formControlName="poste">
+            <input type="text" id="poste" placeholder="Donner ton nouveau poste du travail" formControlName="poste">
           </div>
         </div>
         <div class="profile-actions">

@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
-  setProfilePic(result: string | ArrayBuffer) {
-    throw new Error('Method not implemented.');
-  }
-  private profilePicSource = new BehaviorSubject<string | ArrayBuffer | null>(null);
-  profilePic$ = this.profilePicSource.asObservable();
+  private apiUrl = 'http://localhost:8084/profile'; // Replace with your actual API URL
 
-  updateProfilePic(url: string | ArrayBuffer | null): void {
-    this.profilePicSource.next(url);
+  constructor(private http: HttpClient) {}
+
+  updateUserProfile(data: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/profile`, data);
   }
+
+ 
 }

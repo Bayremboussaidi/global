@@ -1,102 +1,123 @@
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  h2 {
-    text-align: center;
-    margin: 20px 0;
-  }
-  
-  .responsive-table {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.responsive-table {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.table-header {
+  display: flex;
+  background-color: #6c7ae0;
+  color: #fff;
+  padding: 10px 0;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.table-row {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 10px;
+}
+
+.table-header .col,
+.table-row .col {
+  flex: 1; /* Base size for columns */
+  text-align: center;
+  margin: 0 5px;
+}
+
+.table-header .col.col-2,
+.table-row .col.col-2 {
+  flex: 2; /* Increase width of col-2 */
+}
+
+.table-row .col div {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  background-color: #f0f0f0;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  text-align: center;
+}
+
+.table-row .col div:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width: 767px) {
   .table-header {
-    display: flex;
-    background-color: #6c7ae0;
-    color: #fff;
-    padding: 10px 0;
-    width: 100%;
-    max-width: 1000px;
+    display: none;
   }
-  
+
   .table-row {
-    display: flex;
-    padding: 10px 0;
-    border-bottom: 1px solid #e0e0e0;
-    width: 100%;
-    max-width: 1000px;
+    display: block;
     margin-bottom: 10px;
   }
-  
-  .table-header .col,
+
   .table-row .col {
-    flex: 1;
-    text-align: center;
-    margin: 0 5px;
-  }
-  
-  .table-row .col div {
-    width: 100%;
-    padding: 15px;
-    font-size: 16px;
-    background-color: #f0f0f0;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    text-decoration: none;
-    color: inherit;
     display: block;
-    text-align: center;
+    text-align: right;
+    position: relative;
+    padding-left: 50%;
+    margin-bottom: 10px;
   }
-  
-  .table-row .col div:hover {
-    background-color: #e0e0e0;
-    transform: translateY(-2px);
+
+  .table-row .col::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
   }
-  
-  @media screen and (max-width: 767px) {
-    .table-header {
-      display: none;
-    }
-  
-    .table-row {
-      display: block;
-      margin-bottom: 10px;
-    }
-  
-    .table-row .col {
-      display: block;
-      text-align: right;
-      position: relative;
-      padding-left: 50%;
-      margin-bottom: 10px;
-    }
-  
-    .table-row .col::before {
-      content: attr(data-label);
-      position: absolute;
-      left: 10px;
-      width: 45%;
-      padding-right: 10px;
-      white-space: nowrap;
-      text-align: left;
-      font-weight: bold;
-    }
-  
-    .table-row .col div {
-      width: calc(100% - 10px);
-      margin-left: 5px;
-      margin-right: 5px;
-    }
+
+  .table-row .col div {
+    width: calc(100% - 10px);
+    margin-left: 5px;
+    margin-right: 5px;
   }
-  
+}
+
+.logout-option {
+  width: 100%; /* Make it occupy the full width of the column */
+  padding: 15px; /* Same padding as other buttons/links */
+  font-size: 16px; /* Match font size */
+  background-color: #f0f0f0; /* Same background color as others */
+  border: 2px solid #ddd; /* Match border styles */
+  border-radius: 5px; /* Rounded corners like others */
+  cursor: pointer; /* Pointer cursor for interactivity */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+  text-align: center; /* Center align the text */
+}
+
+.logout-option:hover {
+  background-color: #e0e0e0; /* Change background on hover */
+  transform: translateY(-2px); /* Raise slightly on hover */
+}

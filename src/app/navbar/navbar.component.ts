@@ -11,9 +11,9 @@ export class NavbarComponent implements OnInit {
 
   constructor(private profileService: ProfileService) { }
 
-  ngOnInit(): void {
-    this.profileService.profilePic$.subscribe(url => {
-      this.profilePicUrl = url || null;
-    });
-  }
+  ngOnInit(): void {}
+    /*this.profileService.setProfilePic ((url: string) => 
+     { this.profilePicUrl = url || null;}
+    );
+  }*/
 }

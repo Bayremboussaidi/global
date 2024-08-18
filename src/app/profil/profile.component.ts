@@ -39,7 +39,6 @@ export class ProfileComponent implements OnInit {
         const result = e.target?.result;
         if (result) {
           this.profilePicUrl = result;
-          this.profileService.setProfilePic(result); // Share the profile picture URL
         }
       };
 

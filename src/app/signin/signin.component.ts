@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-  
-import { LoginService } from '../services/login.service'; // Adjust the path if necessary (use default import)
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-signin',
@@ -14,7 +13,7 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,    
+    private router: Router,
     private loginService: LoginService
   ) {}
 
@@ -32,23 +31,35 @@ export class SigninComponent implements OnInit {
       try {
         const response: any = await this.loginService.login(email, password);
 
-        // Assuming the response contains user data in the expected format
+        // Log the response from the login service
+        console.log(response);
+
         const userData = {
-          role: response.role || 'ingenieur' || 'admin', // get user role from your backend response
+          poste: response.poste, 
           nom: response.nom,
           prenom: response.prenom,
-          cin: response.cin
+          tel: response.tel,
+          email: response.email,
+          cin: response.cin 
         };
 
-        // Store user details in AuthService
-        this.loginService.setUserDetails(userData); // Call the method to set user data*/
+        console.log('User Poste:', userData.poste); 
 
-        // Navigate to the dashboard after successful login
-        this.router.navigate(['/dashboard']);
-      } catch (error) {
+        // Store user details in LoginService
+        this.loginService.setUserDetails(userData);
+
+        // Navigate based on user role (poste)
+        if (userData.poste === 'admin') {
+          console.log('Redirecting to admin dashboard');
+          this.router.navigate(['/dash-admin']);
+        } else {
+          console.log('Redirecting to user dashboard');
+          this.router.navigate(['/dashboard']);
+        }
+      } catch (error: any) {
         console.error('Sign-in failed:', error);
+        alert('Login failed: ' + error.message);
         this.router.navigate(['/signin']);
-        // Handle sign-in failure, e.g., display an error message to the user
       }
     }
   }

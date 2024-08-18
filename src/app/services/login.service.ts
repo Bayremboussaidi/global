@@ -1,46 +1,49 @@
-// LoginService.js
-import axios from 'axios';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root' // Makes this service available throughout the application
+  providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl: string = 'http://localhost:8084/signin'; // Replace with your actual API URL
+  private userSubject = new BehaviorSubject<any>(null); // Store user data
+  public user$ = this.userSubject.asObservable(); // Observable for user data
 
-  constructor(private router: Router) {}
+  constructor(private http: HttpClient) {}
 
-  async login(email: string, password: string) {
-    try {
-      const userData = await this.signin(email, password);
-      this.setUserDetails(userData); // Save the user data in local storage
-      return userData;
-    } catch (error) {
-      throw error; // Propagate the error to the component
-    }
+  // Method for logging in
+  login(email: string, password: string): Promise<any> {
+    return this.http.post<any>('http://localhost:8084/signin', { email, password }).toPromise()
+      .then(response => {
+        // You might need to adjust based on the actual API response structure
+        if (response.user) {
+          // Assuming response contains user data
+          this.setUserDetails(response.user);
+        }
+        return response; // Return the response for further processing
+      })
+      .catch(error => {
+        // Handle the error appropriately
+        console.error('Login error:', error);
+        throw new Error(error.error.message || 'Login failed');
+      });
   }
 
-  private async signin(email: string, password: string) {
-    try {
-      const response = await axios.post(this.apiUrl, { email, password });
-      return response.data; // Success, return user data and token
-    } catch (error: any) {
-      if (error.response) {
-        throw new Error(error.response.data || 'Login failed');
-      } else {
-        throw new Error('Server error');
-      }
-    }
+  // Method to set user details in service
+  setUserDetails(user: any): void {
+    this.userSubject.next(user); // Update user observable
+    localStorage.setItem('user', JSON.stringify(user)); // Optionally save to localStorage
   }
 
-   setUserDetails(userData: any): void {
-    // Store user data as a JSON string
-    localStorage.setItem('user', JSON.stringify(userData));
+  // Method to get user details
+  getUserDetails(): any {
+    return this.userSubject.value || JSON.parse(localStorage.getItem('user') || 'null');
   }
 
+  // Method to log out
   logout(): void {
-    localStorage.removeItem('user'); // Clear user data from local storage
-    this.router.navigate(['/signin']); // Redirect to login page
+    this.userSubject.next(null); // Clear user data
+    localStorage.removeItem('user'); // Clear from localStorage
   }
 }

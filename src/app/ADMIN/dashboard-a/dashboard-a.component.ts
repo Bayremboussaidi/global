@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-a',
@@ -6,16 +8,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard-a.component.css']
 })
 export class DashboardAComponent {
+  constructor(private loginservice: LoginService , private router : Router) {  // Fixed constructor syntax
+  }
 
-  tableData = [
-    { jobId: 42235, customerName: 'John Doe', amount: 350, paymentStatus: 'Pending' },
-    { jobId: 42442, customerName: 'Jennifer Smith', amount: 220, paymentStatus: 'Pending' },
-    { jobId: 42257, customerName: 'John Smith', amount: 341, paymentStatus: 'Pending' },
-    { jobId: 42311, customerName: 'John Carpenter', amount: 115, paymentStatus: 'Pending' },
-  ];
+  
 
   handleButtonClick(value: any): void {
     console.log('Button clicked:', value);
+  }
+
+  logout(): void {
+    this.loginservice.logout();
+    this.router.navigate(['/signin']);
+
   }
 
 }
