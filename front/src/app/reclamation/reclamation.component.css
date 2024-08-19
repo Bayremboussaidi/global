@@ -1,0 +1,80 @@
+/* Styles for Reclamation Component */
+
+/* Container styles */
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  min-height: 100vh; /* Full viewport height */
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background for contrast */
+}
+
+/* Button styles */
+button {
+  margin-bottom: 10px; /* Reduce margin if necessary */
+  font-size: 1rem; /* Smaller font size */
+  padding: 8px 16px; /* Smaller padding */
+  background-color: #007bff; /* Maintain background color */
+  color: white; /* Maintain text color */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Rounded corners for aesthetic */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Form field styles */
+mat-form-field {
+  width: 100%;
+  max-width: 600px; /* Increased max-width for form fields */
+  margin-bottom: 20px; /* Increased spacing between fields */
+}
+
+/* Increase input area sizes */
+mat-form-field input,
+mat-form-field textarea {
+  font-size: 1.5rem; /* Larger font size for input fields */
+  padding: 16px; /* Increased padding for more height */
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  max-width: 800px; /* Increased max width for tables */
+  border-collapse: collapse;
+  margin-top: 40px; /* Increased margin between table and form */
+}
+
+/* Table header styles */
+th {
+  background-color: #f0f0f0;
+  text-align: left;
+  padding: 12px; /* Increased padding for header cells */
+}
+
+/* Table cell styles */
+td {
+  border: 1px solid #ddd;
+  padding: 12px; /* Increased padding for table cells */
+}
+
+/* Highlighted row styles */
+.mat-row:hover {
+  background-color: #f0f0f0;
+}
+
+/* Optional: Responsive styles */
+@media (max-width: 600px) {
+  mat-form-field {
+      max-width: 90%; /* Adjust input width for smaller screens */
+  }
+
+  table {
+      max-width: 90%; /* Adjust table width for smaller screens */
+  }
+}

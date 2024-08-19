@@ -1,0 +1,102 @@
+/* styles.css or signup.component.css */
+
+/* Center the wrap-signup container */
+.wrap-signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background-color: black; /* Background color of the page */
+  color: white; /* Default text color */
+  margin: 0;
+}
+
+/* Center the signup form within the container */
+.container {
+  width: 100%;
+  max-width: 500px; /* Set a max-width for the form container */
+}
+
+/* Style the signup box */
+.signup-box {
+  background-color: #333; /* Dark grey background for the form */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the form header */
+.signup-header h2 {
+  margin: 0;
+  text-align: center;
+  color: white; /* Header text color */
+}
+
+/* Style form fields */
+.form-field {
+  margin-bottom: 15px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 5px;
+  color: white; /* Label text color */
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-field input {
+  background-color: #444; /* Input background color */
+  color: white; /* Input text color */
+}
+
+.form-field select {
+  background-color: #444; /* Select background color */
+  color: white; /* Select text color */
+}
+
+/* Style error messages */
+.error {
+  color: red;
+  font-size: 0.9em;
+}
+
+/* Style the submit button */
+.signup-actions button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #555; /* Button background color */
+  color: white; /* Button text color */
+  cursor: pointer;
+}
+
+.signup-actions button:hover {
+  background-color: #666; /* Button hover color */
+}
+
+/* Style the signin message */
+.signin-message {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.signin-message p {
+  margin: 0;
+}
+
+.signin-message a {
+  color: #aaa; /* Link color */
+}
+
+.signin-message a:hover {
+  color: white; /* Link hover color */
+}

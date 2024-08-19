@@ -1,0 +1,8 @@
+<div class="show-reclamation-container">
+   <div class="title">Liste des reclamations</div>
+    
+    <div *ngIf="displayReclamations" class="reclamation-list">
+      <pre>{{ reclamationList | json }}</pre>
+    </div>
+  </div>
+  

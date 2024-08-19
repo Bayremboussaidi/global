@@ -1,0 +1,18 @@
+<div class="repas-list">
+    <h2>Commandes de Repas</h2>
+    
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    
+    <ul>
+      <li *ngFor="let commande of commandesRepas">
+        
+        nom du repas : {{ commande.nom_du_repas }} <br>
+        Quantity: {{ commande.quantity }}<br>
+        Comment: {{ commande.commentaire }}<br>
+        CIN: {{ commande.cin }}<br>
+        <hr>
+      </li>
+    </ul>
+    
+    <div *ngIf="!commandesRepas.length" class="no-data">No commandes found.</div>
+  </div>
