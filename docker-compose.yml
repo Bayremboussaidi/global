@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  angular-app:
+    build:
+      context: ./front
+    ports:
+      - "4200:80"  # Host:Container
+    depends_on:
+      - express-app
+
+
+
+
+  express-app:
+    build:
+      context: ./back  # Update this path to your Express app directory.
+    ports:
+      - "8084:8084"
+    environment:
+      DB_HOST: mysql  # Referencing the MySQL service name
+      DB_USER: root
+      DB_PASSWORD: 
+      DB_NAME: global
+    depends_on:  # Ensures express-app waits for mysql
+      - mysql
+
+  mysql:
+    image: mysql:latest
+    ports:
+      - "3307:3306"  # Optional, exposes MySQL port outside of Docker
+    environment:
+      MYSQL_ROOT_PASSWORD: 
+      MYSQL_DATABASE: global
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 

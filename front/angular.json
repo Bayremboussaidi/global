@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/my-login-app",
+            "outputPath": "dist/global",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
