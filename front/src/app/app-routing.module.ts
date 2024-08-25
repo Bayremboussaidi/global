@@ -17,6 +17,7 @@ import { HeadComponent } from './head/head.component';
 import { ShowReclamationComponent } from './ADMIN/show-rec/show-rec.component';
 import { RepasListComponent } from './ADMIN/repas-list/repas-list.component';
 import { TransportListComponent } from './ADMIN/transport-list/transport-list.component';
+import { authGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -34,8 +35,8 @@ const routes: Routes = [
   },
   {
     path: 'transport-a',   
-    component: AddTransComponent, //canActivate :[ authGuard ] //add transport trajects
-  },
+    component: AddTransComponent, canActivate: [authGuard], data: { role: 'admin' } },
+  
   {
     path: 'users-a',
     component: UsersComponent, //canActivate :[ authGuard ] 
@@ -58,8 +59,8 @@ const routes: Routes = [
   component: ProfileComponent
   },
   {path: 'dash-admin',
-    component: DashboardAComponent , //canActivate :[ authGuard ] 
-  },  
+    component: DashboardAComponent , canActivate: [authGuard], data: { role: 'admin' } },
+   
   {path: 'repas',
     component: ShowRepasComponent //choose your food
   },
@@ -70,7 +71,7 @@ const routes: Routes = [
     component: HeadComponent 
   },
   {path: 'reclam-admin',
-    component: ShowReclamationComponent
+    component: ShowReclamationComponent , canActivate: [authGuard], data: { role: 'admin' } 
   },
   {path: 'commanderepas',
     component: RepasListComponent 
