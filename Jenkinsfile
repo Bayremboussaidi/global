@@ -28,6 +28,28 @@ pipeline {
             }
         }
 
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the Docker image using the Dockerfile in the root of the repository
+                    bat 'docker build -t bayrem/application .' // Update this to match your image name
+                }
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                script {
+                    // Log in to Docker Hub using credentials stored in Jenkins
+                    withCredentials([usernamePassword(credentialsId: '1', usernameVariable: 'bayrem', passwordVariable: 'Alizahida123')]) {
+                        bat 'echo %DOCKER_PASSWORD% | docker login -u %DOCKER_USERNAME% --password-stdin'
+                    }
+                    // Push the Docker image to Docker Hub
+                    bat 'docker push bayrem/application:latest' // Update this to match your image name
+                }
+            }
+        }
+
         stage('Build Angular App') {
             steps {
                 dir('front') {
@@ -46,3 +68,5 @@ pipeline {
         }
     }
 }
+
+//permiss issue when trying to connect docker daemon and jenkins
