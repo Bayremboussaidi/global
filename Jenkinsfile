@@ -69,4 +69,4 @@ pipeline {
     }
 }
 
-//permiss issue when trying to connect docker daemon and jenkins
+//permiss issue when trying to connect docker daemon and jenkins mm
