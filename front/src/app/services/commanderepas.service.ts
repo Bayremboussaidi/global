@@ -19,7 +19,7 @@ export interface RepasCommand {
 })
 export class CommanderepasService {
 
-    private apiUrl = 'http://localhost:8084/commanderepas'; 
+    private apiUrl = 'http://localhost:8084/api/commanderepas'; 
 
     constructor(private http: HttpClient) { }
 

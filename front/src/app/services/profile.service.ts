@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProfileService {
-  private apiUrl = 'http://localhost:8084/profile'; // Replace with your actual API URL
+  private apiUrl = 'http://localhost:8084/api/profile'; // Replace with your actual API URL
 
   constructor(private http: HttpClient) {}
 

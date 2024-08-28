@@ -14,7 +14,7 @@ interface Repas {
   providedIn: 'root'
 })
 export class RepasService {
-  private apiUrl = 'http://localhost:8084/repas';  // Get the API URL from environment variable
+  private apiUrl = 'http://localhost:8084/api/repas';  // Get the API URL from environment variable
 
   constructor(private http: HttpClient) {}
 

@@ -14,7 +14,7 @@ export class LoginService {
 
   // Method for logging in
   login(email: string, password: string): Promise<any> {
-    return this.http.post<any>('http://localhost:8084/signin', { email, password }).toPromise()
+    return this.http.post<any>('http://localhost:8084/api/signin', { email, password }).toPromise()
       .then(response => {
         // You might need to adjust based on the actual API response structure
         if (response.user) {

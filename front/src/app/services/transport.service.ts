@@ -15,7 +15,7 @@ interface Transport {
 })
 export class TransportService {
 
-  private apiUrl = 'http://localhost:8084/transport'; // Replace with your actual API URL
+  private apiUrl = 'http://localhost:8084/api/transport'; // Replace with your actual API URL
 
   constructor(private http: HttpClient) { }
 

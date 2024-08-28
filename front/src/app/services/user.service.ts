@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 
 
 interface User {
-  id?: number;      // Unique identifier for each user
-  nom: string;     // Last name
-  prenom: string;  // First name
-  sexe: 'Masculin' | 'Féminin' | 'Autre'; // Gender
-  tel: string;     // Phone number
+  id?: number;      
+  nom: string;   
+  prenom: string;  
+  sexe: 'Masculin' | 'Féminin' | 'Autre'; 
+  tel: string;     
   email: string;   // Email address
   poste: string;   // Job title/position
   cin: string;     // National identity card number
@@ -17,7 +17,7 @@ interface User {
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8084/users'; // Replace with your API URL
+  private apiUrl = 'http://localhost:8084/api/users'; 
 
   constructor(private http: HttpClient) {}
 

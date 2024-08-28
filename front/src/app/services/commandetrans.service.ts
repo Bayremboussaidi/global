@@ -20,7 +20,7 @@ export class CommandetransService {
 
 
 
-    private apiUrl = 'http://localhost:8084/commandetrans'; // Your API URL
+    private apiUrl = 'http://localhost:8084/api/commandetrans'; // Your API URL
 
     constructor(private http: HttpClient) { }
 
