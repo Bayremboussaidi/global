@@ -6,28 +6,58 @@ require('dotenv').config();
 const router = express.Router();
 router.use(express.json());  
 
-/* Signup */
+
+
+
+
+
+
+
+
+
+// Signup
+
 router.post('/signup', async (req, res) => {
   try {
     const { nom, prenom, sexe, tel, email, poste, password, cin } = req.body;
 
+    // Validate input
     if (!nom || !prenom || !sexe || !tel || !email || !poste || !password || !cin) {
       return res.status(400).send('All fields are required');
     }
 
+    // Check if user already exists
+    const results = await new Promise((resolve, reject) => {
+      db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
+        if (err) return reject(err);
+        resolve(results);
+      });
+    });
+
+    if (results.length > 0) {
+      return res.status(400).send('Email already exists');
+    }
+
+    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = { nom, prenom, sexe, tel, email, poste, password: hashedPassword, cin };
-    const query = 'INSERT INTO users SET ?';
 
-    db.query(query, user, (err, result) => {
-      if (err) {
-        console.error(err);
-        if (err.code === 'ER_DUP_ENTRY') {
-          return res.status(400).send('Email already exists');
-        }
-        return res.status(500).send('Server error');
-      }
-      res.status(201).json({ message: 'User registered', user: { nom, prenom, sexe, tel, email, poste, cin } });
+    await new Promise((resolve, reject) => {
+      db.query('INSERT INTO users SET ?', user, (err, result) => {
+        if (err) return reject(err);
+        resolve(result);
+      });
+    });
+
+    // Create a JWT token for the new user
+    const token = jwt.sign({ email: user.email, nom: user.nom, prenom: user.prenom }, process.env.JWT_SECRET, {
+      expiresIn: '1h' // Token validity period
+    });
+
+    res.status(201).json({
+      message: 'User registered',
+      user: { nom, prenom, sexe, tel, email, poste, cin },
+      token,
     });
   } catch (error) {
     console.error(error);
@@ -35,10 +65,47 @@ router.post('/signup', async (req, res) => {
   }
 });
 
+
+
+const authenticateJWT = (req, res, next) => {
+  const token = req.headers['authorization']?.split(' ')[1];
+  if (!token) {
+    return res.sendStatus(403); // Forbidden
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) {
+      return res.sendStatus(403); // Forbidden
+    }
+    req.user = user;
+    next();
+  });
+};
+
+
+/*
+const checkAuth = (req, res, next) => {
+  const token = req.headers['authorization'];
+  if (!token) {
+    return res.status(403).send('Authorization required');
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(401).send('Invalid token');
+    }
+    req.user = decoded; 
+    next();
+  });
+};
+*/
+
+
 /* Signin */
 router.post('/signin', async (req, res) => {
   const { email, password } = req.body;
   
+  // Validate input
   if (!email || !password) {
     return res.status(400).send('Email and password are required');
   }
@@ -48,6 +115,7 @@ router.post('/signin', async (req, res) => {
   
   db.query(query, [email], async (err, results) => {
     if (err) {
+      console.error(err);
       return res.status(500).send('Server error');
     }
 
@@ -56,16 +124,20 @@ router.post('/signin', async (req, res) => {
     }
 
     const user = results[0];
+    
+    // Compare the provided password with the hashed password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(401).send('Invalid credentials');
     }
 
-    const JWT_SECRET = process.env.JWT_SECRET;
+    // Generate a JWT token
+    const token = jwt.sign(
+      { id: user.id, email: user.email, nom: user.nom, prenom: user.prenom },
+      process.env.JWT_SECRET,
+      { expiresIn: '72h' } // Token validity period
+    );
 
-    // Generate JWT token
-    const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: '72h' });
-    
     // Respond with user details and token
     res.json({
       id: user.id,
@@ -80,6 +152,8 @@ router.post('/signin', async (req, res) => {
   });
 });
 
+
+
 /* Fetch all users */
 router.get('/users', (req, res) => {
   db.query('SELECT * FROM users', (err, results) => {
@@ -92,11 +166,23 @@ router.get('/users', (req, res) => {
 });
 
 /* Transport */
-router.post('/transport', (req, res) => {
+router.post('/transport', authenticateJWT, (req, res) => {
   const { adresseDest, dateDepart, NbrePlace, numID } = req.body;
 
+  // Validate input
   if (!adresseDest || !dateDepart || typeof NbrePlace === 'undefined' || typeof numID === 'undefined') {
     return res.status(400).json({ error: 'All fields (adresseDest, dateDepart, NbrePlace, and numID) are required' });
+  }
+
+  // Optional: Validate that NbrePlace is a number
+  if (isNaN(NbrePlace) || NbrePlace <= 0) {
+    return res.status(400).json({ error: 'NbrePlace must be a valid positive number' });
+  }
+
+  // Optional: Validate date format (you can use a library like moment.js or date-fns)
+  const date = new Date(dateDepart);
+  if (isNaN(date.getTime())) {
+    return res.status(400).json({ error: 'dateDepart must be a valid date' });
   }
 
   const query = 'INSERT INTO transport (adresseDest, dateDepart, NbrePlace, numID) VALUES (?, ?, ?, ?)';
@@ -108,6 +194,9 @@ router.post('/transport', (req, res) => {
     return res.status(201).json({ message: 'Transport added successfully', transportId: result.insertId });
   });
 });
+
+
+
 
 // GET  all transports
 router.get('/transport', (req, res) => {
@@ -122,11 +211,37 @@ router.get('/transport', (req, res) => {
 });
 
 /* Repas */
-router.post('/repas', (req, res) => {
+// Validation Function
+const validateRepasInput = (nom, prix) => {
+  if (!nom || typeof nom !== 'string' || nom.trim().length === 0) {
+    return 'Invalid nom: it must be a non-empty string.';
+  }
+  if (typeof prix !== 'number' || prix < 0) {
+    return 'Invalid prix: it must be a non-negative number.';
+  }
+  return null; // No validation errors
+}
+
+
+
+
+
+
+
+
+// Endpoint to add a meal
+router.post('/repas', authenticateJWT, (req, res) => {
   const { nom, prix } = req.body;
 
-  if (!nom || typeof prix !== 'number') {
-    return res.status(400).send('Invalid input data');
+  // Check for required fields
+  if (!nom || !prix) {
+    return res.status(400).json({ error: 'Missing nom or prix' });
+  }
+
+  // Validate input
+  const validationError = validateRepasInput(nom, prix);
+  if (validationError) {
+    return res.status(400).json({ error: validationError });
   }
 
   const query = 'INSERT INTO repas (nom, prix) VALUES (?, ?)';
@@ -134,12 +249,18 @@ router.post('/repas', (req, res) => {
   db.query(query, [nom, prix], (err, result) => {
     if (err) {
       console.error('Error inserting repas:', err.message);
-      res.status(500).send('Error inserting repas');
-    } else {
-      res.status(200).send('Repas added successfully');
+      return res.status(500).json({ error: 'Error inserting repas' });
     }
+    res.status(201).json({ message: 'Repas added successfully', repasId: result.insertId });
   });
 });
+
+
+
+
+
+
+
 
 router.get('/repas', (req, res) => {
   const query = 'SELECT * FROM repas';
@@ -199,14 +320,20 @@ router.put('/profile', async (req, res) => {
   }
 });
 
-/* Reclamation */
-router.post('/reclamation', (req, res) => {
-  const { email, reclam } = req.body;
 
-  if (!email || !reclam) {
-    return res.status(400).json({ error: 'Email and reclamation text are required.' });
+
+
+// Reclamation
+router.post('/reclamation', authenticateJWT, (req, res) => {
+  const { reclam } = req.body; // Retrieve reclamation text from the body
+
+  if (!reclam) {
+    return res.status(400).json({ error: 'Reclamation text is required.' });
   }
 
+  const email = req.user.email; // Get the email from the authenticated user's token
+
+  // Insert into the database
   db.query(
     'INSERT INTO reclamation (email, reclam) VALUES (?, ?)',
     [email, reclam],
@@ -221,7 +348,7 @@ router.post('/reclamation', (req, res) => {
 });
 
 // GET all reclamations
-router.get('/reclamation', (req, res) => {
+router.get('/reclamation', authenticateJWT ,(req, res) => {
   db.query('SELECT * FROM reclamation', (err, results) => {
     if (err) {
       console.error('Error fetching reclamations from database:', err);
@@ -232,7 +359,7 @@ router.get('/reclamation', (req, res) => {
 });
 
 // Commande Repas endpoints using router
-router.post('/commanderepas', (req, res) => {
+router.post('/commanderepas', authenticateJWT , (req, res) => {
   const { nomR, commentaire, cin, quantity } = req.body;
 
   const sql = `INSERT INTO commanderepas (nomR, commentaire, cin, quantity) VALUES (?, ?, ?, ?)`;
@@ -248,7 +375,7 @@ router.post('/commanderepas', (req, res) => {
 });
 
 // Endpoint to get all repas commands
-router.get('/commanderepas', (req, res) => {
+router.get('/commanderepas', authenticateJWT ,(req, res) => {
   const sql = `SELECT * FROM commanderepas`;
 
   db.query(sql, (err, results) => {
@@ -261,3 +388,7 @@ router.get('/commanderepas', (req, res) => {
 });
 
 module.exports = router;
+
+
+
+
