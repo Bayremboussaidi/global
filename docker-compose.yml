@@ -1,9 +1,11 @@
-version: '3.8'
+version: '3.9'
 
 services:
   angular-app:
     build:
       context: ./front
+    image: bayremboussaidi/front
+      
     ports:
       - "4200:80"  # Host:Container
     depends_on:
@@ -15,6 +17,8 @@ services:
   express-app:
     build:
       context: ./back  # Update this path to your Express app directory.
+    image: bayremboussaidi/back
+      
     ports:
       - "8084:8084"
     environment:

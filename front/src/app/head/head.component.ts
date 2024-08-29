@@ -18,3 +18,4 @@ export class HeadComponent {
     this.router.navigate(['/signin']);
   }
 }
+
