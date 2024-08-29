@@ -50,7 +50,7 @@ pipeline {
             }
         }
 
-        stage('Build Angular App') {
+        stage('Build Angular App')  {
             steps {
                 dir('front') {
                     bat 'npm run build' // Using bat for Windows shell
