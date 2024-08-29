@@ -5,7 +5,7 @@ pipeline {
     }
 
     stages {
-        stage('Build and Push Docker Images') {
+        stage('Build and Pushh Docker Images') {
             steps {
                 script{
                     
