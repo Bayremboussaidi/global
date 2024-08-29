@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/Bayremboussaidi/global.git', branch: 'main'
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'global', url: 'https://github.com/Bayremboussaidi/global.git']])
             }
         }
 
@@ -28,29 +28,31 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Build and Push Docker Images') {
             steps {
                 script {
-                    // Build the Docker image using the Dockerfile in the root of the repository
-                    bat 'docker build -t bayrem/application .' // Update this to match your image name
-                }
-            }
-        }
-
-        stage('Push to Docker Hub') {
-            steps {
-                script {
+                    // Build the Docker images using docker-compose.yaml
+                    bat 'docker-compose build' // Build the images
                     // Log in to Docker Hub using credentials stored in Jenkins
-                    withCredentials([usernamePassword(credentialsId: '1', usernameVariable: 'bayrem', passwordVariable: 'Alizahida123')]) {
+                    withCredentials([usernamePassword(credentialsId: '3', usernameVariable:'DOCKER_USERNAME',passwordVariable:'DOCKER_PASSWORD')]) {
                         bat 'echo %DOCKER_PASSWORD% | docker login -u %DOCKER_USERNAME% --password-stdin'
                     }
-                    // Push the Docker image to Docker Hub
-                    bat 'docker push bayrem/application:latest' // Update this to match your image name
+                    // Push the Docker images to Docker Hub
+                    bat 'docker-compose push' // This assumes the images are defined in the docker-compose.yml
                 }
             }
         }
 
-        stage('Build Angular App')  {
+        stage('Run Docker Compose') {
+            steps {
+                script {
+                    // Start the containers in detached mode
+                    bat 'docker-compose up -d' // Use this to run containers
+                }
+            }
+        }
+
+        stage('Build Angular App') {
             steps {
                 dir('front') {
                     bat 'npm run build' // Using bat for Windows shell
@@ -68,5 +70,3 @@ pipeline {
         }
     }
 }
-
-//permiss issue when trying to connect docker daemon and jenkins mm
