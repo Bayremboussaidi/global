@@ -67,6 +67,9 @@ router.post('/signup', async (req, res) => {
 
 
 
+
+
+// l middleware 
 const authenticateJWT = (req, res, next) => {
   const token = req.headers['authorization']?.split(' ')[1];
   if (!token) {
@@ -83,34 +86,18 @@ const authenticateJWT = (req, res, next) => {
 };
 
 
-/*
-const checkAuth = (req, res, next) => {
-  const token = req.headers['authorization'];
-  if (!token) {
-    return res.status(403).send('Authorization required');
-  }
-
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-    if (err) {
-      return res.status(401).send('Invalid token');
-    }
-    req.user = decoded; 
-    next();
-  });
-};
-*/
 
 
 /* Signin */
 router.post('/signin', async (req, res) => {
   const { email, password } = req.body;
   
-  // Validate input
+ 
   if (!email || !password) {
     return res.status(400).send('Email and password are required');
   }
 
-  // Query to find the user by email
+ 
   const query = 'SELECT * FROM users WHERE email = ?';
   
   db.query(query, [email], async (err, results) => {
@@ -120,12 +107,12 @@ router.post('/signin', async (req, res) => {
     }
 
     if (results.length === 0) {
-      return res.status(401).send('Invalid credentials'); // User not found
+      return res.status(401).send('Invalid credentials');
     }
 
     const user = results[0];
     
-    // Compare the provided password with the hashed password
+    
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(401).send('Invalid credentials');
@@ -169,17 +156,16 @@ router.get('/users', (req, res) => {
 router.post('/transport', authenticateJWT, (req, res) => {
   const { adresseDest, dateDepart, NbrePlace, numID } = req.body;
 
-  // Validate input
   if (!adresseDest || !dateDepart || typeof NbrePlace === 'undefined' || typeof numID === 'undefined') {
     return res.status(400).json({ error: 'All fields (adresseDest, dateDepart, NbrePlace, and numID) are required' });
   }
 
-  // Optional: Validate that NbrePlace is a number
+ 
   if (isNaN(NbrePlace) || NbrePlace <= 0) {
     return res.status(400).json({ error: 'NbrePlace must be a valid positive number' });
   }
 
-  // Optional: Validate date format (you can use a library like moment.js or date-fns)
+ 
   const date = new Date(dateDepart);
   if (isNaN(date.getTime())) {
     return res.status(400).json({ error: 'dateDepart must be a valid date' });
@@ -211,7 +197,7 @@ router.get('/transport', (req, res) => {
 });
 
 /* Repas */
-// Validation Function
+//fct valid
 const validateRepasInput = (nom, prix) => {
   if (!nom || typeof nom !== 'string' || nom.trim().length === 0) {
     return 'Invalid nom: it must be a non-empty string.';
@@ -219,7 +205,7 @@ const validateRepasInput = (nom, prix) => {
   if (typeof prix !== 'number' || prix < 0) {
     return 'Invalid prix: it must be a non-negative number.';
   }
-  return null; // No validation errors
+  return null; 
 }
 
 
@@ -233,7 +219,7 @@ const validateRepasInput = (nom, prix) => {
 router.post('/repas', authenticateJWT, (req, res) => {
   const { nom, prix } = req.body;
 
-  // Check for required fields
+
   if (!nom || !prix) {
     return res.status(400).json({ error: 'Missing nom or prix' });
   }
@@ -325,13 +311,13 @@ router.put('/profile', async (req, res) => {
 
 // Reclamation
 router.post('/reclamation', authenticateJWT, (req, res) => {
-  const { reclam } = req.body; // Retrieve reclamation text from the body
+  const { reclam } = req.body; 
 
   if (!reclam) {
     return res.status(400).json({ error: 'Reclamation text is required.' });
   }
 
-  const email = req.user.email; // Get the email from the authenticated user's token
+  const email = req.user.email;
 
   // Insert into the database
   db.query(
