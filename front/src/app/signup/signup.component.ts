@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
 
       const { nom, prenom, sexe, tel, email, poste, password ,cin} = this.signupForm.value;
 
-      // Ensure register method is called with an object
+      
       this.register.register({ nom, prenom, sexe, tel, email, poste, password , cin }).subscribe({
         next: (response) => {
           console.log('Registration successful', response);

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-login-app": {
+    "Global-Enr": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {

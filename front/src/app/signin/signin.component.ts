@@ -45,10 +45,10 @@ export class SigninComponent implements OnInit {
 
         console.log('User Poste:', userData.poste); 
 
-        // Store user details in LoginService
+        
         this.loginService.setUserDetails(userData);
 
-        // Navigate based on user role (poste)
+        
         if (userData.poste === 'admin') {
           console.log('Redirecting to admin dashboard');
           this.router.navigate(['/dash-admin']);
