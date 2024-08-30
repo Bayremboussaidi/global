@@ -9,14 +9,14 @@ pipeline {
             steps {
                 script{
                     
-                  
-                    bat 'docker-compose build' // Build the images
-                    // Log in to Docker Hub using credentials stored in Jenkins
+                    
+                    bat 'docker-compose build'
+                    
                         bat 'echo %DOCKERHUB_CREDENTIALS_PSW%'
                         bat 'docker login -u %DOCKERHUB_CREDENTIALS_USR% -p %DOCKERHUB_CREDENTIALS_PSW%'
                     
-                    // Push the Docker images to Docker Hub
-                    bat 'docker-compose push' // This assumes the images are defined in the docker-compose.yml
+                   
+                    bat 'docker-compose push' 
                 }
                 }
             
@@ -24,8 +24,8 @@ pipeline {
 
         stage('Run Docker Compose') {
             steps {
-                    // Start the containers in detached mode
-                    bat 'docker compose --project-name=global up -d' // Use this to run containers
+                   
+                    bat 'docker compose --project-name=global up -d'
                 
             }
         }
