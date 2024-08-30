@@ -9,7 +9,7 @@ pipeline {
             steps {
                 script{
                     
-                    // Build the Docker images using docker-compose.yaml
+                  
                     bat 'docker-compose build' // Build the images
                     // Log in to Docker Hub using credentials stored in Jenkins
                         bat 'echo %DOCKERHUB_CREDENTIALS_PSW%'
