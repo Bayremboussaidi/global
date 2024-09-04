@@ -64,7 +64,7 @@ import { AddTransComponent } from './add-trans/add-trans.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,  // Moved to the top for better readability
+    HttpClientModule, 
     FormsModule,
     ReactiveFormsModule,
     // Angular Material modules

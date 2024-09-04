@@ -25,7 +25,7 @@ const User = {
                 if (err) {
                     return reject(err);
                 }
-                resolve(result.affectedRows); // Return the number of affected rows
+                resolve(result.affectedRows); 
             });
         });
     }
