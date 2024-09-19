@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-login-app": {
+    "global": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "my-login-app:build:production"
+              "buildTarget": "global:build:production"
             },
             "development": {
-              "buildTarget": "my-login-app:build:development"
+              "buildTarget": "global:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "my-login-app:build"
+            "buildTarget": "global:build"
           }
         },
         "test": {
