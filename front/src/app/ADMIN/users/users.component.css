@@ -13,12 +13,14 @@
   position: absolute;
   top: 10px;
   left: 10px;
+  background-color: rgb(80, 218, 59);
 }
 
 .users-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  background-color: rgba(154, 160, 161, 0.973);
 }
 
 .users-table th,
