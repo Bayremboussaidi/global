@@ -5,31 +5,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full viewport height */
-  background-color: black; /* Background color of the page */
-  color: white; /* Default text color */
-  margin: 0;
+  height: 130vh; /* Full viewport height */
+  background-color: aliceblue; /* Match signin background color */
+  color: black; /* Default text color */
+  margin-top: 0vh;
+  margin-bottom: auto;
 }
 
 /* Center the signup form within the container */
 .container {
   width: 100%;
-  max-width: 500px; /* Set a max-width for the form container */
+  max-width: 400px; /* Set a max-width for the form container */
 }
 
 /* Style the signup box */
 .signup-box {
-  background-color: #333; /* Dark grey background for the form */
+  background-color: #ccc; /* Box background color */
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Style the form header */
 .signup-header h2 {
   margin: 0;
   text-align: center;
-  color: white; /* Header text color */
+  color: black; /* Change header text color to black */
 }
 
 /* Style form fields */
@@ -40,7 +41,7 @@
 .form-field label {
   display: block;
   margin-bottom: 5px;
-  color: white; /* Label text color */
+  color: black; /* Label text color */
 }
 
 .form-field input,
@@ -53,13 +54,13 @@
 }
 
 .form-field input {
-  background-color: #444; /* Input background color */
-  color: white; /* Input text color */
+  background-color: #f0f0f0; /* Input background color */
+  color: black; /* Input text color */
 }
 
 .form-field select {
-  background-color: #444; /* Select background color */
-  color: white; /* Select text color */
+  background-color: #f0f0f0; /* Select background color */
+  color: black; /* Select text color */
 }
 
 /* Style error messages */
@@ -74,7 +75,7 @@
   padding: 10px;
   border: none;
   border-radius: 4px;
-  background-color: #555; /* Button background color */
+  background-color: #3f51b5; /* Button background color to match signin */
   color: white; /* Button text color */
   cursor: pointer;
 }
@@ -94,7 +95,7 @@
 }
 
 .signin-message a {
-  color: #aaa; /* Link color */
+  color: #3f51b5; /* Link color to match signin */
 }
 
 .signin-message a:hover {

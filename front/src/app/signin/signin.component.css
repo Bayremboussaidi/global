@@ -2,84 +2,83 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.wrap-login {
+    height: 120vh; /* Full viewport height */
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .wrap-login {
+    background-color: aliceblue;
+}
+
+.container {
     width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .container {
-    width: 100%;
+    
     max-width: 400px;
-    margin: 22px;
-  }
-  
-  .login-box {
+    box-sizing: border-box; /* Include padding and border in total width */
+}
+
+.login-box {
     width: 100%;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
+    background-color: #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .login-header {
+}
+
+.login-header {
     text-align: center;
     margin-bottom: 20px;
-  }
-  
-  .login-image {
+}
+
+.login-image {
     width: 100%;
     height: auto;
-  }
-  
-  .login-content .form-field {
+}
+
+.login-content .form-field {
     margin-bottom: 15px;
-  }
-  
-  .login-content .form-field label {
+}
+
+.login-content .form-field label {
     display: block;
     margin-bottom: 5px;
-  }
-  
-  .login-content .form-field input {
+}
+
+.login-content .form-field input {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
-  }
-  
-  .login-actions {
+}
+
+.login-actions {
     text-align: center;
     margin-top: 20px;
-  }
-  
-  .login-actions button {
+}
+
+.login-actions button {
     padding: 10px 20px;
     border: none;
     background-color: #3f51b5;
     color: white;
     cursor: pointer;
     border-radius: 4px;
-  }
-  
-  .signup-message {
+}
+
+.signup-message {
     margin-top: 16px;
     text-align: center;
-  }
-  
-  .signup-message a {
+}
+
+.signup-message a {
     text-decoration: none;
     color: #3f51b5;
-  }
-  
-  .error {
+}
+
+.error {
     color: red;
     font-size: 12px;
-  }
-  
+}

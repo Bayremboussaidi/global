@@ -1,29 +1,41 @@
-/* Styles for Reclamation Component */
-
-/* Container styles */
+/* Ensure the component takes up the full viewport height */
 :host {
   display: flex;
   flex-direction: column;
   align-items: center; /* Center horizontally */
   justify-content: center; /* Center vertically */
   min-height: 100vh; /* Full viewport height */
-  padding: 20px;
-  background-color: #f9f9f9; /* Light background for contrast */
+  margin: 0; /* Remove margin */
+  padding: 0; /* Remove padding */
+  width: 100%; /* Full viewport width */
+  background-color: rgba(255, 255, 255, 0.3); /* White background with 30% opacity */
+  box-sizing: border-box;
 }
 
+/* Container for content */
+.reclamation-container {
+  width: 100%; /* Ensure full width */
+  max-width: 600px; /* Upper limit to fit in viewport but centered */
+  padding: 20px; /* Padding inside the container */
+  box-sizing: border-box;
+  background: white; /* Solid white background for content */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for aesthetics */
+}
+
+/* Style for buttons */
 .button-icon {
   width: 70px; /* Set image width */
   height: 50px; /* Set image height */
 }
 
-/* Button styles */
 button {
   margin-bottom: 10px; /* Reduce margin if necessary */
-  font-size: 1rem; /* Smaller font size */
-  padding: 8px 16px; /* Smaller padding */
-  background-color: #007bff; /* Maintain background color */
-  color: white; /* Maintain text color */
-  border: none; /* Remove default border */
+  font-size: 1rem; /* Font size */
+  padding: 8px 16px; /* Padding */
+  background-color: #007bff; /* Button color */
+  color: white; /* Text color */
+  border: none; /* Remove border */
   border-radius: 4px; /* Rounded corners for aesthetic */
   cursor: pointer; /* Pointer cursor on hover */
 }
@@ -33,6 +45,7 @@ button:hover {
   background-color: #0056b3; /* Darker shade on hover */
 }
 
+/* Return button style */
 .return-button {
   position: absolute;
   top: 10px;
@@ -42,50 +55,57 @@ button:hover {
 /* Form field styles */
 mat-form-field {
   width: 100%;
-  max-width: 600px; /* Increased max-width for form fields */
-  margin-bottom: 20px; /* Increased spacing between fields */
+  max-width: 600px; /* Increase max-width for form fields */
+  margin-bottom: 20px; /* Spacing between fields */
+  box-sizing: border-box;
 }
 
-/* Increase input area sizes */
+/* Increase input and textarea sizes */
 mat-form-field input,
 mat-form-field textarea {
   font-size: 1.5rem; /* Larger font size for input fields */
-  padding: 16px; /* Increased padding for more height */
+  padding: 16px; /* Increased padding for height */
+  height: 50px; /* Set a fixed height for the input */
+  width: 100%; /* Full width of the container */
+}
+
+/* Optional: Style specifically for the textarea */
+mat-form-field textarea {
+  min-height: 150px; /* Set a minimum height for the textarea */
 }
 
 /* Table styles */
 table {
   width: 100%;
-  max-width: 800px; /* Increased max width for tables */
+  max-width: 100%; /* Prevent table from exceeding viewport width */
   border-collapse: collapse;
-  margin-top: 40px; /* Increased margin between table and form */
+  margin-top: 40px; /* Margin between table and form */
 }
 
 /* Table header styles */
 th {
-  background-color: #f0f0f0;
   text-align: left;
-  padding: 12px; /* Increased padding for header cells */
+  padding: 12px; /* Padding for header cells */
 }
 
 /* Table cell styles */
 td {
   border: 1px solid #ddd;
-  padding: 12px; /* Increased padding for table cells */
+  padding: 12px; /* Padding for table cells */
 }
 
 /* Highlighted row styles */
 .mat-row:hover {
-  background-color: #f0f0f0;
+  background-color: #f0f0f0; /* Highlight on hover */
 }
 
 /* Optional: Responsive styles */
 @media (max-width: 600px) {
   mat-form-field {
-      max-width: 90%; /* Adjust input width for smaller screens */
+    max-width: 90%; /* Adjust input width for smaller screens */
   }
 
   table {
-      max-width: 90%; /* Adjust table width for smaller screens */
+    max-width: 90%; /* Adjust table width for smaller screens */
   }
 }

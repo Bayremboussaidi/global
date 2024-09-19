@@ -1,0 +1,26 @@
+.background-container {
+    width: 100vw; /* Full width of the viewport */
+    height: 120vh; /* Full height of the viewport */
+    background-size: cover; /* Ensures the background covers the container */
+    background-position: center center; /* Centers the background image */
+    transition: background-image 1s ease-in-out; /* Smooth fade transition between background images */
+  }
+  
+  router-outlet {
+    position: relative;
+    z-index: 1;
+ 
+    display: block;
+    width: 100%;
+    height: 110%;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 110%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  
+  

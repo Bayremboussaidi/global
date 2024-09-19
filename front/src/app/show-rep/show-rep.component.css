@@ -3,11 +3,6 @@
   margin: 20px;
 }
 
-
-.button-icon {
-  width: 70px; /* Set image width */
-  height: 50px; /* Set image height */
-}
 .repas-list {
   margin-top: 20px;
 }
@@ -16,6 +11,10 @@
   width: 100%;
 }
 
+.button-icon {
+  width: 70px; /* Set image width */
+  height: 50px; /* Set image height */
+}
 .return-button {
   position: absolute;
   top: 10px;

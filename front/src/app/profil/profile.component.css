@@ -9,6 +9,7 @@
   width: 70px; /* Set image width */
   height: 50px; /* Set image height */
 }
+
 .return-button {
   position: absolute;
   top: 10px;
@@ -19,7 +20,7 @@
   width: 100%;
   max-width: 600px;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: rgba(255, 255, 255, 0.3); /* 30% visible, 70% transparent */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
