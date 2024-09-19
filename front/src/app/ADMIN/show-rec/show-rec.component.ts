@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReclamationService } from '../../services/reclamation.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-show-reclamation',
@@ -10,10 +12,13 @@ export class ShowReclamationComponent implements OnInit {
   reclamationList: any[] = []; // Replace with your data model
   displayReclamations: boolean = false;
 
-  constructor(private reclamationService: ReclamationService) { }
+  constructor(private reclamationService: ReclamationService , private router: Router) { }
 
   ngOnInit(): void {
     this.toggleReclamations() ;
+  }
+  goToCentralPage() {
+    this.router.navigate(['/dash-admin']);
   }
 
   toggleReclamations() {

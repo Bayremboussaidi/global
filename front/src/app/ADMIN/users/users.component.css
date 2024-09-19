@@ -9,6 +9,12 @@
   font-weight: bold;
 }
 
+.return-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
 .users-table {
   width: 100%;
   border-collapse: collapse;

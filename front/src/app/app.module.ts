@@ -37,8 +37,6 @@ import { RepasListComponent } from './ADMIN/repas-list/repas-list.component';
 import { TransportListComponent } from './ADMIN/transport-list/transport-list.component';
 import { AddTransComponent } from './add-trans/add-trans.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +60,7 @@ import { AddTransComponent } from './add-trans/add-trans.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule,  // <-- You already imported the AppRoutingModule here
     BrowserAnimationsModule,
     HttpClientModule, 
     FormsModule,
@@ -75,7 +73,7 @@ import { AddTransComponent } from './add-trans/add-trans.component';
     MatSelectModule,
     MatOptionModule,
     MatTableModule,
-    MatDialogModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

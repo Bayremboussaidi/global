@@ -1,1 +1,11 @@
-<router-outlet></router-outlet>
+<div>
+    <app-header></app-header>
+</div>
+
+<main [@routeAnimations]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </main>
+  
+  
+  
+  

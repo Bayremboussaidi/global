@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 import { TransportService } from 'src/app/services/transport.service';
 
 interface Transport {
@@ -22,7 +23,7 @@ export class AddTransComponent implements OnInit {
   transportList: Transport[] = []; // Change type to Transport for better type safety
   displayedColumns: string[] = ['adresseDest', 'dateDepart', 'NbrePlace'];
 
-  constructor(private formBuilder: FormBuilder, private transportservice: TransportService) {
+  constructor(private formBuilder: FormBuilder, private transportservice: TransportService , private router : Router) {
     this.transportForm = this.formBuilder.group({ // Create the form group
       adresseDest: ['', Validators.required],
       dateDepart: ['', Validators.required],
@@ -35,6 +36,10 @@ export class AddTransComponent implements OnInit {
     this.showAddForm = true; // Show the form on initiation
   }
 
+  
+ goToCentralPage() {
+  this.router.navigate(['/dashboard']);
+}
   onSubmit() {
     if (this.transportForm.valid) {
       // Use the Transport type here

@@ -8,12 +8,20 @@
     padding: 20px;
     background-color: #f9f9f9; /* Light background for contrast */
 }
-
+.button-icon {
+    width: 70px; /* Set image width */
+    height: 50px; /* Set image height */
+  }
 /* Title styles */
 .title {
     font-size: 2.5rem; /* Increase the title size */
     margin-bottom: 20px; /* Space below title */
 }
+.return-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
 
 /* Form styles */
 .transport-form {

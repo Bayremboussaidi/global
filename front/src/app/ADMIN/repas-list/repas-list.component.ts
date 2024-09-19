@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommanderepasService, RepasCommand } from '../../services/commanderepas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-repas-list',
@@ -10,10 +11,13 @@ export class RepasListComponent implements OnInit {
   commandesRepas: RepasCommand[] = [];
   errorMessage: string | null = null;
 
-  constructor(private commandeRepasService: CommanderepasService) { }
+  constructor(private commandeRepasService: CommanderepasService , private router: Router) { }
 
   ngOnInit() {
     this.fetchCommandesRepas();
+  }
+  goToCentralPage() {
+    this.router.navigate(['/dash-admin']);
   }
 
   fetchCommandesRepas() {

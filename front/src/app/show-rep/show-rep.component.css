@@ -3,12 +3,23 @@
   margin: 20px;
 }
 
+
+.button-icon {
+  width: 70px; /* Set image width */
+  height: 50px; /* Set image height */
+}
 .repas-list {
   margin-top: 20px;
 }
 
 .repas-table {
   width: 100%;
+}
+
+.return-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 .show {

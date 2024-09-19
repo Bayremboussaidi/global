@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service'; // Ensure the path is correct
+import { Router } from '@angular/router';
+
 
 interface User {
   id: number;      // Unique identifier for each user
@@ -20,10 +22,14 @@ interface User {
 export class UsersComponent implements OnInit {
   users: User[] = []; // Declare and initialize a users property
 
-  constructor(private userService: UserService) {} 
+  constructor(private userService: UserService , private router: Router) {} 
 
   ngOnInit(): void {
     this.display(); // Fetch users when the component initializes
+  }
+
+  goToCentralPage() {
+    this.router.navigate(['/dash-admin']);
   }
 
   display() {

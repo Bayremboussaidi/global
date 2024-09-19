@@ -1,4 +1,7 @@
 <div class="wrap-profile">
+
+  <button mat-raised-button color="accent" (click)="goToCentralPage()" class="return-button"><img src="../../assets/house.png" alt="Return to Central Page" class="button-icon">
+  </button>
   <div class="container">
     <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
       <div class="profile-box">

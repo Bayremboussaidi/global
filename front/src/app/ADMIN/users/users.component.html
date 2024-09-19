@@ -1,4 +1,6 @@
 <div class="users-container">
+  <button mat-raised-button color="accent" (click)="goToCentralPage()" class="return-button">Return to Central Page</button>
+
   <h1>Liste des utilisateurs</h1>
 
   <div *ngIf="users.length === 0" class="no-users">
