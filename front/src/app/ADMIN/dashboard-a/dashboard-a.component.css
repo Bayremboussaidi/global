@@ -10,6 +10,13 @@ h2 {
   margin: 20px 0;
 }
 
+.admin-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;  /* Adjust this value to reduce top margin */
+  margin-bottom: 10px;  /* Adjust this value to reduce bottom margin */
+}
+
 .responsive-table {
   list-style: none;
   padding: 0;
