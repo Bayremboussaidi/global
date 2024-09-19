@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 interface Repas {
-  nom: string; // Make sure this matches your data model
+  nom: string; 
  
   prix: number;
 }
