@@ -14,6 +14,11 @@
   position: absolute;
   top: 10px;
   left: 10px;
+  cursor: pointer;
+}
+
+.return-button:hover {
+  background-color: rgb(15, 174, 10); /* Color when hovered */
 }
 
 .container {

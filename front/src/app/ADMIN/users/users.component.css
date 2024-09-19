@@ -13,7 +13,11 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: rgb(80, 218, 59);
+  cursor: pointer;
+}
+
+.return-button:hover {
+  background-color: rgb(15, 174, 10); /* Color when hovered */
 }
 
 .users-table {

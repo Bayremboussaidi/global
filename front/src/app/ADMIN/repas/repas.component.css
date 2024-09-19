@@ -1,37 +1,4 @@
-/*body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f4f4f4;
-}
 
-.return-button {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
-
-.center-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.repas-form, .repas-table {
-  width: 50%;
-  max-width: 500px;
-}
-
-.repas-table {
-  margin-top: 20px;
-}*/
 
 body, html {
   margin: 0;
@@ -47,8 +14,16 @@ body, html {
   position: absolute;
   top: 10px;
   left: 10px;
+  cursor: pointer;
 }
 
+.return-button:hover {
+  background-color: rgb(15, 174, 10); /* Color when hovered */
+}
+
+.return-button:active {
+  background-color: darkred; /* Color when clicked */
+}
 .center-container {
   display: flex;
   flex-direction: column;
@@ -59,12 +34,12 @@ body, html {
   margin-top: 10vh;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: 50%; /* Set the width of center-container */
+  width: 50%; 
 }
 
 .repas-form, .repas-table {
-  width: 60%; /* Set the width of repas-form and repas-table */
-  max-width: 100%; /* Allow them to take full width in smaller screens */
+  width: 60%; 
+  max-width: 100%; 
 }
 
 .repas-table {
