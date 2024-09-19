@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RepasService } from '../../services/repas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-repas',
@@ -8,12 +9,14 @@ import { RepasService } from '../../services/repas.service';
   styleUrls: ['./repas.component.css']
 })
 export class RepasComponent implements OnInit {
+  
+
   repasForm!: FormGroup;
   repasList: any[] = [];
   displayedColumns: string[] = ['nom', 'prix'];
   showAddForm: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private repasService: RepasService) { }
+  constructor(private formBuilder: FormBuilder, private repasService: RepasService , private router: Router) { }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -25,6 +28,10 @@ export class RepasComponent implements OnInit {
       prix: ['', Validators.required],
      
     });
+  }
+
+  goToCentralPage() {
+    this.router.navigate(['/dash-admin']);
   }
 
   onSubmit() {

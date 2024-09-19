@@ -5,6 +5,16 @@
   height: 100vh;
 }
 
+.button-icon {
+  width: 70px; /* Set image width */
+  height: 50px; /* Set image height */
+}
+.return-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
 .container {
   width: 100%;
   max-width: 600px;

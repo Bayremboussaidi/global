@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+
 
 interface User {
-  role: string;
   nom: string;
   prenom: string;
-  cin: string;
+  sexe: string; 
+  tel: string;  
+  email: string; 
+  poste: string; 
+  cin: string;   
 }
 
 @Injectable({
@@ -13,8 +20,22 @@ interface User {
 export class AuthService {
   private user: User | null = null;
 
-  constructor() {}
+  private apiUrl = 'http://localhost:8084/api';
 
+  constructor(private http: HttpClient) {}
+
+  login(email: string, password: string): Observable<{ token: string; user: User }> {
+    return this.http.post<{ token: string; user: User }>(`${this.apiUrl}/login`, {
+    email,
+    password,
+  }).pipe(
+    tap((response) => {
+      if (response && response.token) {
+        this.setUserDetails(response.user); 
+      }
+    })
+  );
+ }
   setUserDetails(user: User): void {
     this.user = user;
     localStorage.setItem('user', JSON.stringify(user)); // Save user data to local storage
@@ -25,7 +46,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return this.user !== null;
+    return this.user !== null ;
   }
 
   logout(): void {

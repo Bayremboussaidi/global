@@ -11,6 +11,11 @@
   background-color: #f9f9f9; /* Light background for contrast */
 }
 
+.button-icon {
+  width: 70px; /* Set image width */
+  height: 50px; /* Set image height */
+}
+
 /* Button styles */
 button {
   margin-bottom: 10px; /* Reduce margin if necessary */
@@ -26,6 +31,12 @@ button {
 /* Button hover effect */
 button:hover {
   background-color: #0056b3; /* Darker shade on hover */
+}
+
+.return-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 /* Form field styles */

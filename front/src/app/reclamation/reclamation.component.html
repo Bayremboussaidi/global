@@ -1,15 +1,23 @@
 <div class="reclamation-container">
-  <!--button mat-raised-button color="primary" (click)="showAddForm = !showAddForm">Ajouter une réclamation</button-->
+  <button mat-raised-button color="accent" (click)="goToCentralPage()" class="return-button"><img src="../../assets/house.png" alt="Return to Central Page" class="button-icon">
+  </button>
   
   <form *ngIf="showAddForm" [formGroup]="reclamationForm" (ngSubmit)="onSubmit()">
-    <mat-form-field>
-      <mat-label>Email d' émetteur</mat-label>
-      <input matInput formControlName="emailEnvoi">
-    </mat-form-field>
+   
+
     <mat-form-field>
       <mat-label>Texte de la réclamation</mat-label>
       <textarea matInput formControlName="texte"></textarea>
     </mat-form-field>
+
     <button mat-raised-button color="accent" type="submit">Submit</button>
   </form>
 </div>
+
+
+
+<!--mat-form-field>
+  /*<mat-label>Email d'émetteur</mat-lab>
+  < The email is managed by the formControlName and is disabled >
+  <input matInput formControlName="emailEnvoi"  />
+</mat-form-field--> 

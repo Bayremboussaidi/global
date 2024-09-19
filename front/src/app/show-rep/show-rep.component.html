@@ -1,5 +1,7 @@
 <div class="center-container">
-  <div class="show">show repas</div>
+  <div class="show"></div>
+  <button mat-raised-button color="accent" (click)="goToCentralPage()" class="return-button"><img src="../../assets/house.png" alt="Return to Central Page" class="button-icon">
+  </button>
 
   <div *ngIf="displayRepas" class="repas-list">
     <table mat-table [dataSource]="repasList" class="mat-elevation-z8 repas-table">

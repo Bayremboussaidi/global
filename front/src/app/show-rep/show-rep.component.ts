@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { RepasService } from '../services/repas.service';
 import { CommanderepasService } from '../services/commanderepas.service';
+import { Router } from '@angular/router';
 
 // Define the Repas interface
 interface Repas {
@@ -37,7 +38,8 @@ export class ShowRepasComponent implements OnInit {
   constructor(
     private repasService: RepasService, 
     private fb: FormBuilder, 
-    private commande: CommanderepasService
+    private commande: CommanderepasService,
+    private router: Router
   ) {
     // Initialize the form with validators
     this.newRepasForm = this.fb.group({
@@ -53,6 +55,9 @@ export class ShowRepasComponent implements OnInit {
     this.loadRepas(); // Fetch repas list on initialization
   }
 
+ goToCentralPage() {
+    this.router.navigate(['/dashboard']);
+  }
   loadRepas() {
     this.repasService.getAllRepas().subscribe(
       (data: Repas[]) => {

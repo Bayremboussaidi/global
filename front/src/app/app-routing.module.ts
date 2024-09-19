@@ -19,7 +19,37 @@ import { RepasListComponent } from './ADMIN/repas-list/repas-list.component';
 import { TransportListComponent } from './ADMIN/transport-list/transport-list.component';
 import { authGuard } from './auth.guard';
 
-const routes: Routes = [
+const routes:
+ Routes = [
+  { path: 'signin', component: SigninComponent, data: { animation: 'SigninPage' } },
+  { path: '', redirectTo: 'signin', pathMatch: 'full' },
+  { path: 'signup', component: SignupComponent, data: { animation: 'SignupPage' } },
+  { path: 'repas-a', component: RepasComponent, data: { animation: 'RepasPage' } },
+  { path: 'transport-a', component: AddTransComponent, canActivate: [authGuard], data: { role: 'admin', animation: 'TransportPage' } },
+  { path: 'users-a', component: UsersComponent, data: { animation: 'UsersPage' } },
+  { path: 'reclamation', component: ReclamationComponent, data: { animation: 'ReclamationPage' } },
+  { path: 'dashboard', component: DashboardComponent, data: { animation: 'DashboardPage' } },
+  { path: 'header', component: HeaderComponent },
+  { path: 'editp', component: ProfileComponent, data: { animation: 'EditProfilePage' } },
+  { path: 'dash-admin', component: DashboardAComponent, canActivate: [authGuard], data: { role: 'admin', animation: 'AdminDashboardPage' } },
+  { path: 'repas', component: ShowRepasComponent, data: { animation: 'ShowRepasPage' } },
+  { path: 'trans', component: ShowTransComponent, data: { animation: 'ShowTransPage' } },
+  { path: 'head', component: HeadComponent, data: { animation: 'HeadPage' } },
+  { path: 'reclam-admin', component: ShowReclamationComponent, canActivate: [authGuard], data: { role: 'admin', animation: 'AdminReclamationPage' } },
+  { path: 'commanderepas', component: RepasListComponent, data: { animation: 'CommandeRepasPage' } },
+  { path: 'commandetrans', component: TransportListComponent, data: { animation: 'CommandeTransPage' } }
+];
+
+
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}
+
+
+/* Routes = [
   {
     path: 'signin',
     component: SigninComponent
@@ -45,7 +75,7 @@ const routes: Routes = [
   },
   {
     path: 'reclamation',
-    component: ReclamationComponent
+    component: ReclamationComponent , data: { animation: 'AboutPage' }
   },
   {
     path: 'dashboard',
@@ -81,10 +111,6 @@ const routes: Routes = [
   }
 
   
-];
+];*/
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}
+

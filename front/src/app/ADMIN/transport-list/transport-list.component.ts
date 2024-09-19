@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommandetransService , TransCommand  } from '../../services/commandetrans.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-transport-list',
@@ -10,10 +12,14 @@ export class TransportListComponent implements OnInit {
   commandesTrans: TransCommand[] = [];
   errorMessage: string | null = null;
 
-  constructor(private commandeTransService: CommandetransService) { }
+  constructor(private commandeTransService: CommandetransService , private router: Router) { }
 
   ngOnInit() {
     this.fetchCommandesTrans();
+  }
+
+  goToCentralPage() {
+    this.router.navigate(['/dash-admin']);
   }
 
   fetchCommandesTrans() {

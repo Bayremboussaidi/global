@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ProfileService } from '../services/profile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +12,7 @@ export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
   profilePicUrl: string | ArrayBuffer | null = null;
 
-  constructor(private fb: FormBuilder, private profileService: ProfileService) {
+  constructor(private fb: FormBuilder, private profileService: ProfileService , private router : Router) {
     this.profileForm = this.fb.group({
       nom: [''],
       prenom: [''],
@@ -26,6 +27,10 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     // Initialization logic if needed
+  }
+
+  goToCentralPage() {
+    this.router.navigate(['/dashboard']);
   }
 
   onFileChange(event: Event): void {

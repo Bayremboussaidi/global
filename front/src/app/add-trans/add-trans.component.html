@@ -1,6 +1,9 @@
 <div class="center-container">
     <h1 class="title"></h1>
 
+    <button mat-raised-button color="accent" (click)="goToCentralPage()" class="return-button"><img src="../../assets/house.png" alt="Return to Central Page" class="button-icon">
+    </button>
+
     <form *ngIf="showAddForm" [formGroup]="transportForm" (ngSubmit)="onSubmit()" class="transport-form">
         <div class="form-group">
             <label for="adresseDest">Adresse de destination</label>
