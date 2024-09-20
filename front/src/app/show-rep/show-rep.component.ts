@@ -29,7 +29,7 @@ interface RepasCommand {
 })
 export class ShowRepasComponent implements OnInit {
   repasList: Repas[] = []; // List of meals
-  displayedColumns: string[] = ['nom', 'commentaire', 'cin', 'prix'];
+  displayedColumns: string[] = ['nom',  'prix'];
   displayRepas: boolean = false; // Control the visibility of the repas list
   newRepasForm: FormGroup;
   loading: boolean = false; 
@@ -84,7 +84,7 @@ export class ShowRepasComponent implements OnInit {
 
   addRepas() {
     if (this.newRepasForm.valid) {
-      // Extract values from the form
+      
       const nomR = this.newRepasForm.value.nomR; 
       const commentaire = this.newRepasForm.value.commentaire;
       const cin = this.newRepasForm.value.cin.toString();

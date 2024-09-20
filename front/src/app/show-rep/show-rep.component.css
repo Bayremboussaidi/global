@@ -3,12 +3,17 @@
   margin: 20px;
 }
 
-.repas-list {
+
+
+.menu {
   margin-top: 20px;
+  margin-bottom: 5vh;
+  width: 40vh;
+
 }
 
 .repas-table {
-  width: 100%;
+  width: 60%;
 }
 
 .button-icon {
@@ -27,4 +32,41 @@
   overflow: hidden;    /* Hides any overflow text if it extends beyond the container */
   text-overflow: ellipsis; /* Adds ellipsis (...) for overflowing text */
   font-size: 24px;  
+}
+
+
+/*       */ 
+
+
+.col{
+  
+ font-style: oblique;
+ color: black;
+ font-size: 20px;
+  font-family: "Lucida Handwriting";
+ 
+}
+
+.users-table {
+  width: 60%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-left: 40vh;
+  margin-bottom: 7vh;
+  background-color: rgba(154, 160, 161, 0.973);
+}
+
+.users-table th,
+.users-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.users-table th {
+  background-color: #f4f4f4;
+}
+
+.users-table tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
