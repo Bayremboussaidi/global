@@ -7,14 +7,6 @@ const router = express.Router();
 router.use(express.json());  
 
 
-
-
-
-
-
-
-
-
 // Signup
 
 router.post('/signup', async (req, res) => {
@@ -153,7 +145,7 @@ router.get('/users', (req, res) => {
 });
 
 /* Transport */
-router.post('/transport' /*authenticateJWT*/, (req, res) => {
+router.post('/transport' ,authenticateJWT, (req, res) => {
   const { adresseDest, dateDepart, NbrePlace, numID } = req.body;
 
   if (!adresseDest || !dateDepart || typeof NbrePlace === 'undefined' || typeof numID === 'undefined') {
@@ -216,7 +208,7 @@ const validateRepasInput = (nom, prix) => {
 
 
 // Endpoint to add a meal
-router.post('/repas' /*authenticateJWT*/, (req, res) => {
+router.post('/repas' ,authenticateJWT, (req, res) => {
   const { nom, prix } = req.body;
 
 
@@ -310,7 +302,7 @@ router.put('/profile', async (req, res) => {
 
 
 // Reclamation
-router.post('/reclamation'/*authenticateJWT*/, (req, res) => {
+router.post('/reclamation',authenticateJWT, (req, res) => {
   const { email,reclam } = req.body; 
 
   if (!reclam) {
@@ -344,7 +336,7 @@ router.get('/reclamation' ,(req, res) => {
 });
 
 // Commande Repas endpoints using router
-router.post('/commanderepas', /*authenticateJWT*/  (req, res) => {
+router.post('/commanderepas', authenticateJWT,  (req, res) => {
   const { nom_du_repas, commentaire, cin, quantity } = req.body;
 
   const sql = `INSERT INTO commanderepas (nomR, commentaire, cin, quantity) VALUES (?, ?, ?, ?)`;

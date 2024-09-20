@@ -173,7 +173,7 @@ export class ShowRepasComponent implements OnInit {
     this.newRepasForm = this.fb.group({
       nom_du_repas: ['', [Validators.required]], // Updated to use 'nom_du_repas'
       commentaire: ['  ', Validators.required],
-      cin: ['', [Validators.required, Validators.minLength(1)]],
+      cin: [' '],
       quantity: [1, [Validators.required, Validators.min(1)]], // Set minimum quantity to 1
     });
   }

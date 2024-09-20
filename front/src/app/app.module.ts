@@ -16,7 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 // Angular Modules
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 // Your Components
 import { SignupComponent } from './signup/signup.component';
@@ -36,6 +36,7 @@ import { ShowReclamationComponent } from './ADMIN/show-rec/show-rec.component';
 import { RepasListComponent } from './ADMIN/repas-list/repas-list.component';
 import { TransportListComponent } from './ADMIN/transport-list/transport-list.component';
 import { AddTransComponent } from './add-trans/add-trans.component';
+import { JwtInterceptor } from './jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,9 @@ import { AddTransComponent } from './add-trans/add-trans.component';
     MatTableModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
