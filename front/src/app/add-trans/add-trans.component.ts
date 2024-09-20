@@ -48,7 +48,7 @@ export class AddTransComponent implements OnInit {
         (addedTransport: Transport) => { 
           this.transportList.push(addedTransport); 
           this.transportForm.reset(); // Reset form after adding to list
-          this.showAddForm = false; // Optionally hide the form after submission
+          //this.showAddForm = false; // Optionally hide the form after submission
         },
         error => {
           console.error('Error adding transport', error);

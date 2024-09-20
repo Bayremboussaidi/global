@@ -44,7 +44,7 @@ export class ShowRepasComponent implements OnInit {
     // Initialize the form with validators
     this.newRepasForm = this.fb.group({
       nomR: ['', [Validators.required]], // Changed 'nom_du_repas' to 'nomR' for consistency
-      commentaire: ['', Validators.required],
+      commentaire: [' ', Validators.required],
       cin: ['', [Validators.required, Validators.minLength(1)]],
       quantity: [1, [Validators.required, Validators.min(1)]], // Set minimum quantity to 1
     });
