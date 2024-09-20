@@ -51,7 +51,7 @@ router.post('/signup', async (req, res) => {
 
     // Create a JWT token for the new user
     const token = jwt.sign({ email: user.email, nom: user.nom, prenom: user.prenom }, process.env.JWT_SECRET, {
-      expiresIn: '1h' // Token validity period
+      expiresIn: '3h' // Token validity period
     });
 
     res.status(201).json({
@@ -153,7 +153,7 @@ router.get('/users', (req, res) => {
 });
 
 /* Transport */
-router.post('/transport', authenticateJWT, (req, res) => {
+router.post('/transport' /*authenticateJWT*/, (req, res) => {
   const { adresseDest, dateDepart, NbrePlace, numID } = req.body;
 
   if (!adresseDest || !dateDepart || typeof NbrePlace === 'undefined' || typeof numID === 'undefined') {
@@ -216,7 +216,7 @@ const validateRepasInput = (nom, prix) => {
 
 
 // Endpoint to add a meal
-router.post('/repas', authenticateJWT, (req, res) => {
+router.post('/repas' /*authenticateJWT*/, (req, res) => {
   const { nom, prix } = req.body;
 
 
@@ -247,7 +247,7 @@ router.post('/repas', authenticateJWT, (req, res) => {
 
 
 
-
+//show all repas
 router.get('/repas', (req, res) => {
   const query = 'SELECT * FROM repas';
   db.query(query, (err, results) => {
@@ -310,14 +310,13 @@ router.put('/profile', async (req, res) => {
 
 
 // Reclamation
-router.post('/reclamation', authenticateJWT, (req, res) => {
-  const { reclam } = req.body; 
+router.post('/reclamation'/*authenticateJWT*/, (req, res) => {
+  const { email,reclam } = req.body; 
 
   if (!reclam) {
     return res.status(400).json({ error: 'Reclamation text is required.' });
   }
 
-  const email = req.user.email;
 
   // Insert into the database
   db.query(
@@ -334,7 +333,7 @@ router.post('/reclamation', authenticateJWT, (req, res) => {
 });
 
 // GET all reclamations
-router.get('/reclamation', authenticateJWT ,(req, res) => {
+router.get('/reclamation' ,(req, res) => {
   db.query('SELECT * FROM reclamation', (err, results) => {
     if (err) {
       console.error('Error fetching reclamations from database:', err);
@@ -345,23 +344,23 @@ router.get('/reclamation', authenticateJWT ,(req, res) => {
 });
 
 // Commande Repas endpoints using router
-router.post('/commanderepas', authenticateJWT , (req, res) => {
-  const { nomR, commentaire, cin, quantity } = req.body;
+router.post('/commanderepas', /*authenticateJWT*/  (req, res) => {
+  const { nom_du_repas, commentaire, cin, quantity } = req.body;
 
   const sql = `INSERT INTO commanderepas (nomR, commentaire, cin, quantity) VALUES (?, ?, ?, ?)`;
-  const values = [nomR, commentaire, cin, quantity];
+  const values = [nom_du_repas, commentaire, cin, quantity];
 
   db.query(sql, values, (err, results) => {
     if (err) {
       console.error('Error inserting data:', err);
       return res.status(500).json({ error: 'Error inserting data' });
     }
-    res.status(201).json({ id: results.insertId, nomR, commentaire, cin, quantity });
+    res.status(201).json({ id: results.insertId, nom_du_repas, commentaire, cin, quantity });
   });
 });
 
 // Endpoint to get all repas commands
-router.get('/commanderepas', authenticateJWT ,(req, res) => {
+router.get('/commanderepas',(req, res) => {
   const sql = `SELECT * FROM commanderepas`;
 
   db.query(sql, (err, results) => {
