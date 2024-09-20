@@ -26,7 +26,7 @@ export class ReclamationComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeForm();
-    this.getUserEmail(); // Fetch user email on initialization
+    this.getUserEmail();
     this.loadReclamations();
   }
 
@@ -35,9 +35,9 @@ export class ReclamationComponent implements OnInit {
   }
 
   initializeForm() {
-    // Disable the email field by default
+    
     this.reclamationForm = this.formBuilder.group({
-      emailEnvoi: [{ value: '', disabled: true }, [Validators.required, Validators.email]], 
+      emailEnvoi: [undefined, [Validators.required]], 
       texte: ['', Validators.required]
     });
   }
@@ -56,19 +56,24 @@ export class ReclamationComponent implements OnInit {
   getUserEmail() {
     const userDetails = this.authService.getUserDetails();
     if (userDetails) {
-      this.userEmail = userDetails.email; // Extract the email
-      // Patch the email to the form and make it disabled
+      this.userEmail = userDetails.email; 
+      
+      
       this.reclamationForm.patchValue({ emailEnvoi: this.userEmail });
+     
+      
     }
   }
 
   onSubmit() {
     if (this.reclamationForm.valid) {
       const reclamationData = this.reclamationForm.value;
-      // Add a reclamation using the ReclamationService
+      console.log(reclamationData.emailEnvoi);
+      
+      
       this.reclamationService.addReclamation(reclamationData.emailEnvoi, reclamationData.texte).subscribe(
         (response) => {
-          this.reclamationList.push(reclamationData); // Update the list with the new reclamation
+          this.reclamationList.push(reclamationData); 
           this.reclamationForm.reset();
         },
         (error) => {

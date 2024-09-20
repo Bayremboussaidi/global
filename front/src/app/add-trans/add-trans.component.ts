@@ -3,9 +3,10 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Route, Router } from '@angular/router';
 import { TransportService } from 'src/app/services/transport.service';
 
-interface Transport {
+export interface Transport {
   adresseDest: string;
   dateDepart: string;
+  heureDepart: string;
   NbrePlace: number; // Use proper type
   numID : number;
 }
@@ -27,6 +28,7 @@ export class AddTransComponent implements OnInit {
     this.transportForm = this.formBuilder.group({ // Create the form group
       adresseDest: ['', Validators.required],
       dateDepart: ['', Validators.required],
+      heureDepart: ['',Validators.required],
       NbrePlace: [1, Validators.required],
       numID: ['', [Validators.required, Validators.pattern('^[0-9]*$')]] // Use a pattern for number validation
     });

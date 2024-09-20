@@ -25,7 +25,7 @@
   <form [formGroup]="newRepasForm" (ngSubmit)="addRepas()">
       <mat-form-field appearance="fill">
         <mat-label>Nom du repas</mat-label>
-        <input matInput formControlName="nomR" placeholder="Nom du repas" required>
+        <input matInput formControlName="nom_du_repas" placeholder="Nom du repas" required>
         <mat-error *ngIf="newRepasForm.get('nomR')?.hasError('required')">
           Le nom du repas est requis.
         </mat-error>

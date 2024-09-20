@@ -18,6 +18,9 @@ interface User {
   providedIn: 'root'
 })
 export class AuthService {
+  getToken(): string | null {
+    return localStorage.getItem('token'); // Adjust based on how you store tokens
+  }
   private user: User | null = null;
 
   private apiUrl = 'http://localhost:8084/api';
