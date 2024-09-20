@@ -3,21 +3,8 @@
   <button mat-raised-button color="accent" (click)="goToCentralPage()" class="return-button"><img src="../../assets/house.png" alt="Return to Central Page" class="button-icon">
   </button>
 
-  <div *ngIf="displayRepas" class="repas-list">
-    <!--table mat-table [dataSource]="repasList" class="menu">
-      <ng-container matColumnDef="nom">
-        <th mat-header-cell *matHeaderCellDef> Nom du repas </th>
-        <td mat-cell *matCellDef="let repas"> {{ repas.nom }} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="prix">
-        <th mat-header-cell *matHeaderCellDef> Prix </th>
-        <td mat-cell *matCellDef="let repas"> {{ repas.prix | currency }} </td>
-      </ng-container>
-    
-      <tr mat-header-row *matHeaderRowDef="['nom', 'prix']"></tr>
-      <tr mat-row *matRowDef="let row; columns: ['nom', 'prix'];"></tr>
-    </table-->
+  <div *ngIf="displayRepas" class="table-container">
+
 
     <table class="users-table">
       <thead>
@@ -33,9 +20,9 @@
         </tr>
       </tbody>
     </table>
-
+  </div>
     <!-- New input form -->
-    <form [formGroup]="newRepasForm" (ngSubmit)="addRepas()">
+  <form [formGroup]="newRepasForm" (ngSubmit)="addRepas()">
       <mat-form-field appearance="fill">
         <mat-label>Nom du repas</mat-label>
         <input matInput formControlName="nomR" placeholder="Nom du repas" required>
@@ -80,4 +67,3 @@
       <button mat-raised-button type="submit" color="accent">Ajouter Repas</button>
     </form>
   </div>
-</div>
