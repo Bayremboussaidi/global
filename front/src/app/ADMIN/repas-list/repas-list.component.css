@@ -5,6 +5,7 @@
     max-width: 600px;
     margin: 0 auto;
     background-color: #f9f9f9;
+    max-height: 10000px; 
   }
 
   .return-button {
@@ -15,7 +16,7 @@
   }
   
   .return-button:hover {
-    background-color: rgb(15, 174, 10); /* Color when hovered */
+    background-color: rgb(15, 174, 10); 
   }
   
   h2 {
@@ -42,3 +43,5 @@
     margin-top: 20px;
     font-style: italic;
   }
+
+

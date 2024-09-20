@@ -4,7 +4,25 @@
    <div class="title">Liste des reclamations</div>
     
     <div *ngIf="displayReclamations" class="reclamation-list">
-      <pre>{{ reclamationList | json }}</pre>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Reclamation</th>
+            <th>Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of reclamationList">
+            <td>{{ item.id }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.reclam }}</td>
+            <td>{{ item.created_at | date: 'short' }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <!--pre>{{ reclamationList | json }}</pre-->
     </div>
   </div>
   

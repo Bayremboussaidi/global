@@ -37,3 +37,66 @@
   overflow: hidden;    /* Hides any overflow text if it extends beyond the container */
   text-overflow: ellipsis;
   }
+
+
+
+
+  /*      */ 
+
+
+  .show-reclamation-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .return-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+  }
+  
+  .return-button:hover {
+    background-color: rgb(15, 174, 10); /* Change color on hover */
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+  
+  .reclamation-list {
+    margin-top: 20px;
+  }
+  
+  .reclamation-list table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(154, 160, 161, 0.973);
+  }
+  
+  .reclamation-list thead th,
+  .reclamation-list tbody td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .reclamation-list thead th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .reclamation-list tr:nth-child(even) {
+    background-color: #f9f9f9; /* Zebra striping for even rows */
+  }
+  
+  /* Optional: Styling for empty reclamations list */
+  .no-reclamations {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+  }

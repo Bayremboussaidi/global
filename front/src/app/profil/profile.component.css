@@ -6,8 +6,8 @@
 }
 
 .button-icon {
-  width: 70px; /* Set image width */
-  height: 50px; /* Set image height */
+  width: 70px; 
+  height: 50px; 
 }
 
 .return-button {
@@ -18,7 +18,7 @@
 }
 
 .return-button:hover {
-  background-color: rgb(15, 174, 10); /* Color when hovered */
+  background-color: rgb(15, 174, 10); 
 }
 
 .container {

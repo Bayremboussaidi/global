@@ -77,6 +77,7 @@ displayedColumns: any;
     this.reclamationService.getAllReclamations().subscribe(
       (data: any[]) => {
         this.reclamationList = data;
+        console.log(data)
       },
       (error) => {
         console.error('Error fetching reclamations', error);
