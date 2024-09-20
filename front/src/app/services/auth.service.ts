@@ -19,7 +19,7 @@ interface User {
 })
 export class AuthService {
   getToken(): string | null {
-    return localStorage.getItem('token'); // Adjust based on how you store tokens
+    return localStorage.getItem('token'); 
   }
   private user: User | null = null;
 
@@ -41,7 +41,7 @@ export class AuthService {
  }
   setUserDetails(user: User): void {
     this.user = user;
-    localStorage.setItem('user', JSON.stringify(user)); // Save user data to local storage
+    localStorage.setItem('user', JSON.stringify(user)); 
   }
 
   getUserDetails(): User | null {
@@ -54,6 +54,6 @@ export class AuthService {
 
   logout(): void {
     this.user = null;
-    localStorage.removeItem('user'); // Clear user details from local storage
+    localStorage.removeItem('user'); // Clear user details from local storage fle5er
   }
 }

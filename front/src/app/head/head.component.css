@@ -18,6 +18,10 @@ nav{
              inset -3px -3px 7px #ffffff,
              inset 3px 3px 5px #ceced1;
 }
+
+.routes{
+  margin-right: -15vh;
+}
 nav .menu{
   max-width: 1270px;
   margin: auto;

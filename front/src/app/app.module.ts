@@ -61,7 +61,7 @@ import { JwtInterceptor } from './jwt.interceptor';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,  // <-- You already imported the AppRoutingModule here
+    AppRoutingModule,  
     BrowserAnimationsModule,
     HttpClientModule, 
     FormsModule,

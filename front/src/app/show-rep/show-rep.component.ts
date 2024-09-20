@@ -169,12 +169,12 @@ export class ShowRepasComponent implements OnInit {
     private commande: CommanderepasService,
     private router: Router
   ) {
-    // Initialize the form with validators
+    
     this.newRepasForm = this.fb.group({
-      nom_du_repas: ['', [Validators.required]], // Updated to use 'nom_du_repas'
+      nom_du_repas: ['', [Validators.required]], 
       commentaire: ['  ', Validators.required],
       cin: [' '],
-      quantity: [1, [Validators.required, Validators.min(1)]], // Set minimum quantity to 1
+      quantity: [1, [Validators.required, Validators.min(1)]], 
     });
   }
 
@@ -193,7 +193,7 @@ export class ShowRepasComponent implements OnInit {
         this.repasList = data.map(item => ({
           id: item.id,
           nom: item.nom,
-          prix: item.prix, // Convert price to a number
+          prix: item.prix, 
         }));
       },
       (error) => {
@@ -214,13 +214,13 @@ export class ShowRepasComponent implements OnInit {
   addRepas() {
     if (this.newRepasForm.valid) {
       
-      const nom_du_repas = this.newRepasForm.value.nom_du_repas; // Updated to match property name
+      const nom_du_repas = this.newRepasForm.value.nom_du_repas; 
       const commentaire = this.newRepasForm.value.commentaire;
       const cin = this.newRepasForm.value.cin.toString();
       const quantity = this.newRepasForm.value.quantity;
 
       const newRepasCommand: RepasCommand = {
-        nom_du_repas,  // Ensure this matches required property
+        nom_du_repas,  
         commentaire,
         cin,
         quantity,
@@ -229,16 +229,16 @@ export class ShowRepasComponent implements OnInit {
       this.loading = true;
       this.errorMessage = null; // Clear previous errors
 
-      // Call the service method with the RepasCommand object
+     
       this.commande.addRepasCommand(newRepasCommand).subscribe(
         (data) => {
-          // Optimistically add the new repas command to the list
-          this.repasList.push({ // Adjust this according to your response structure
+          
+          this.repasList.push({ 
             nom: nom_du_repas,
-            prix: 0 // You might want to adjust this to fetch the correct price or keep it uninitialized
+            prix: 0 
           });
           
-          // Reset the form for new input
+          
           this.newRepasForm.reset();
           this.newRepasForm.markAsPristine();
         },

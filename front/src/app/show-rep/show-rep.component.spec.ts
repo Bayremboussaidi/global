@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShowRepComponent } from './show-rep.component';
+import { ShowRepasComponent } from './show-rep.component';
 
 describe('ShowRepComponent', () => {
-  let component: ShowRepComponent;
-  let fixture: ComponentFixture<ShowRepComponent>;
+  let component: ShowRepasComponent;
+  let fixture: ComponentFixture<ShowRepasComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ShowRepComponent]
+      declarations: [ShowRepasComponent]
     });
-    fixture = TestBed.createComponent(ShowRepComponent);
+    fixture = TestBed.createComponent(ShowRepasComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

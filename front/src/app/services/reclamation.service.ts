@@ -11,13 +11,12 @@ export class ReclamationService {
 
   constructor(private http: HttpClient , private authService: AuthService) {}
 
-  // Method to add a new reclamation
   addReclamation(email: string, texte: string): Observable<any> {
     const body = { email, reclam: texte };
     const token = this.authService.getToken();
 
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}` // Use Bearer token
+      'Authorization': `Bearer ${token}` 
     });
     return this.http.post(this.apiUrl, body);
   }
