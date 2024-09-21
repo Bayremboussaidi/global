@@ -1,36 +1,38 @@
 <div class="users-container">
   <button mat-raised-button color="accent" (click)="goToCentralPage()" class="return-button">Return to Central Page</button>
 
-  <h1>Liste des utilisateurs</h1>
+  <h1><b>        Liste des utilisateurs</b></h1>
 
   <div *ngIf="users.length === 0" class="no-users">
     <p>No users found.</p>
   </div>
 
-  <table *ngIf="users.length > 0" class="users-table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Prenom</th>
-        <th>Sexe</th>
-        <th>Téléphone</th>
-        <th>Email</th>
-        <th>Poste</th>
-        <th>CIN</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users">
-        <td>{{ user.id }}</td>
-        <td>{{ user.nom }}</td>
-        <td>{{ user.prenom }}</td>
-        <td>{{ user.sexe }}</td>
-        <td>{{ user.tel }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.poste }}</td>
-        <td>{{ user.cin }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-container">
+    <table *ngIf="users.length > 0" class="users-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Sexe</th>
+                <th>Téléphone</th>
+                <th>Email</th>
+                <th>Poste</th>
+                <th>CIN</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{ user.id }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.sexe }}</td>
+                <td>{{ user.tel }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.poste }}</td>
+                <td>{{ user.cin }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 </div>

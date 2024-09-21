@@ -1,6 +1,6 @@
 .users-container {
   padding: 20px;
-  max-width: 800px;
+  max-width: 850px;
   margin: auto;
 }
 
@@ -40,4 +40,41 @@
 
 .users-table tr:nth-child(even) {
   background-color: #f9f9f9;
+}
+
+
+/* scrwable table */
+
+.table-container {
+  max-height: 3050px; /* Set the maximum height for your table container */
+  height: 450px; /* Fixed height for table container */
+  overflow-y: auto; /* Enable vertical scrolling */
+  margin-top: 20px; /* Space above the table */
+  width: 100%; /* Ensure the table takes full width */
+  border: 1px solid #ccc; /* Optional: border around the container */
+  background-color: rgba(154, 160, 161, 0.973); /* Background color of the container */
+}
+
+.users-table {
+  width: 100%; /* Ensure the table takes the full width of the container */
+  border-collapse: collapse; /* Remove double borders */
+}
+
+.users-table th,
+.users-table td {
+  border: 1px solid #ccc; /* Border for table cells */
+  padding: 10px; /* Padding inside the cells */
+  text-align: left; /* Align text to the left */
+}
+
+.users-table th {
+  background-color: #f4f4f4; /* Background color for header cells */
+}
+
+.users-table tr:nth-child(even) {
+  background-color: #f9f9f9; /* Stripe effect for even rows */
+}
+
+.users-table tr:hover {
+  background-color: #e2e2e2; /* Highlight rows on hover */
 }
