@@ -51,3 +51,39 @@
     background-color: #45a049;
   }
   
+/*scrwo table css */
+
+
+.table-container {
+  max-height: 3000vh; /* Set the maximum height for your table */
+  height: 470px; /* Fixed height for table container */
+  overflow-y: auto; /* Enable vertical scrolling */
+  margin-top: 20px; /* Space above the table */
+  width: 100%; /* Ensure the table takes full width */
+  border: 1px solid #ccc; /* Optional: to add a border around the container */
+  background-color: rgba(154, 160, 161, 0.973); /* Background color of the container */
+}
+
+.table {
+  width: 100%; /* Make sure the table takes the full width of the container */
+  border-collapse: collapse; /* Collapse borders for a cleaner look */
+}
+
+.table th,
+.table td {
+  border: 1px solid #ccc; /* Border for table cells */
+  padding: 10px; /* Padding inside the cells */
+  text-align: left; /* Align text to the left */
+}
+
+.table th {
+  background-color: #f4f4f4; /* Background for header cells */
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9; /* Stripe effect for even rows */
+}
+
+.table tr:hover {
+  background-color: #e2e2e2; /* Highlight rows on hover for better UX */
+}
