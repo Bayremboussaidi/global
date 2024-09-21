@@ -15,6 +15,7 @@ export class RepasListComponent implements OnInit {
 
   ngOnInit() {
     this.fetchCommandesRepas();
+    console.log(this.commandesRepas);
   }
   goToCentralPage() {
     this.router.navigate(['/dash-admin']);
@@ -24,6 +25,8 @@ export class RepasListComponent implements OnInit {
     this.commandeRepasService.getAllRepasCommands().subscribe(
       (data: RepasCommand[]) => {
         this.commandesRepas = data;
+        console.log(this.commandesRepas);
+
       },
       (error) => {
         console.error('Error fetching commandes de repas', error);
