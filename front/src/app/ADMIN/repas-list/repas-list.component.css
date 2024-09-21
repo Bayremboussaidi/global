@@ -4,8 +4,10 @@
     border-radius: 5px;
     max-width: 600px;
     margin: 0 auto;
+    margin-top: 7vh;
     background-color: #f9f9f9;
     max-height: 10000px; 
+    height: 75vh;
   }
 
   .return-button {
@@ -45,3 +47,33 @@
   }
 
 
+
+   /*scrw liste */
+
+   .table-container {
+    max-height: 3000px; /* Set the maximum height for your list */
+    height: 70vh;
+    margin-top: 10vh;
+    margin-bottom: -20vh;
+    overflow-y: auto;  /* Enable vertical scrolling */
+    margin-top: 0;  /* Space above the list */
+    width: 100%; /* Ensure the list takes full width */
+    border: 1px solid #ccc; /* Optional: to add a border around the container */
+    background-color: rgba(204, 219, 222, 0.912); /* Background color of the container */
+  }
+  
+  .commandes-list {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
+    margin-bottom: -20vh;
+    height: 50vh;
+  }
+  
+  .commandes-list li {
+    padding: 10px; /* Padding inside list items */
+    border-bottom: 1px solid #ccc; /* Optional: border between list items */
+  }
+  
+  .commandes-list li:last-child {
+    border-bottom: none; /* Remove border for the last item */
+  }

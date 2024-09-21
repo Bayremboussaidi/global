@@ -5,16 +5,17 @@
     
     <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
     
-    <ul>
-      <li *ngFor="let commande of commandesRepas">
-        
-        nom du repas : {{ commande.nom_du_repas }} <br>
-        Quantity: {{ commande.quantity }}<br>
-        Comment: {{ commande.commentaire }}<br>
-        CIN: {{ commande.cin }}<br>
-        <hr>
-      </li>
-    </ul>
+    <div class="table-container">
+      <ul class="commandes-list">
+        <li *ngFor="let commande of commandesRepas">
+          nom du repas : {{ commande.nom_du_repas }} <br>
+          Quantity: {{ commande.quantity }}<br>
+          Comment: {{ commande.commentaire }}<br>
+          CIN: {{ commande.cin }}<br>
+          <hr>
+        </li>
+      </ul>
+    </div>
     
     <div *ngIf="!commandesRepas.length" class="no-data">No commandes found.</div>
   </div>

@@ -74,7 +74,7 @@
   .reclamation-list table {
     width: 100%;
     border-collapse: collapse;
-    background-color: rgba(154, 160, 161, 0.973);
+    background-color: rgba(204, 219, 222, 0.912); /* Background color of the container */
   }
   
   .reclamation-list thead th,
