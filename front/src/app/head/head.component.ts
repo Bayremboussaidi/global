@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./head.component.css']
 })
 export class HeadComponent {
-  constructor(private loginservice: LoginService  , private router :Router) {  // Fixed constructor syntax
+  constructor(private loginservice: LoginService  , private router :Router) { 
   }
 
   logout(): void {

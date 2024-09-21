@@ -80,6 +80,9 @@ const authenticateJWT = (req, res, next) => {
 
 
 
+
+
+
 /* Signin */
 router.post('/signin', async (req, res) => {
   const { email, password } = req.body;
@@ -144,6 +147,13 @@ router.get('/users', (req, res) => {
   });
 });
 
+
+
+
+
+
+
+
 /* Transport */
 router.post('/transport' ,authenticateJWT, (req, res) => {
   const { adresseDest, dateDepart, NbrePlace, numID } = req.body;
@@ -187,6 +197,15 @@ router.get('/transport', (req, res) => {
     return res.status(200).json(results);
   });
 });
+
+
+
+
+
+
+
+
+
 
 /* Repas */
 //fct valid
@@ -235,10 +254,6 @@ router.post('/repas' ,authenticateJWT, (req, res) => {
 
 
 
-
-
-
-
 //show all repas
 router.get('/repas', (req, res) => {
   const query = 'SELECT * FROM repas';
@@ -251,6 +266,12 @@ router.get('/repas', (req, res) => {
     }
   });
 });
+
+
+
+
+
+
 
 /* Profile Update */
 router.put('/profile', async (req, res) => {
@@ -301,6 +322,15 @@ router.put('/profile', async (req, res) => {
 
 
 
+
+
+
+
+
+
+
+
+
 // Reclamation
 router.post('/reclamation',authenticateJWT, (req, res) => {
   const { email,reclam } = req.body; 
@@ -335,6 +365,18 @@ router.get('/reclamation' ,(req, res) => {
   });
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
 // Commande Repas endpoints using router
 router.post('/commanderepas', authenticateJWT,  (req, res) => {
   const { nom_du_repas, commentaire, cin, quantity } = req.body;
@@ -363,6 +405,7 @@ router.get('/commanderepas',(req, res) => {
     res.json(results);
   });
 });
+
 
 module.exports = router;
 
